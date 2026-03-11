@@ -1924,15 +1924,29 @@ function renderVocabularyList() {
         <div class="vocabulary-item" style="animation-delay: ${index * 0.05}s">
             <div class="word-info">
                 <div>
-                    <span class="word" onclick="playWord('${item.word}', this)">${item.word}</span>
+                    <span class="word" data-word="${item.word}">${item.word}</span>
                     <span class="phonetic">${item.phonetic}</span>
                 </div>
                 <div class="meaning">${item.meaning}</div>
             </div>
-            <button class="play-word-btn" onclick="playWord('${item.word}', this)" title="播放发音">🔊</button>
+            <button class="play-word-btn" data-word="${item.word}" title="播放发音">🔊</button>
             <button class="delete-btn" data-word="${item.word}">×</button>
         </div>
     `).join('');
+    
+    // 添加播放按钮事件
+    vocabularyListEl.querySelectorAll('.play-word-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            playWord(btn.dataset.word, btn);
+        });
+    });
+    
+    // 添加单词点击播放事件
+    vocabularyListEl.querySelectorAll('.word[data-word]').forEach(span => {
+        span.addEventListener('click', () => {
+            playWord(span.dataset.word, span);
+        });
+    });
 }
 
 // 设置事件监听
@@ -2077,18 +2091,32 @@ function renderWords(words) {
             <div class="word-item">
                 <div class="word-info">
                     <div>
-                        <span class="word" onclick="playWord('${w.word}', this)">${w.word}</span>
+                        <span class="word" data-word="${w.word}">${w.word}</span>
                         <span class="phonetic">${w.phonetic}</span>
                     </div>
                     <div class="meaning">${w.meaning}</div>
                 </div>
-                <button class="play-word-btn" onclick="playWord('${w.word}', this)" title="播放发音">🔊</button>
+                <button class="play-word-btn" data-word="${w.word}" title="播放发音">🔊</button>
                 <button class="add-btn ${isAdded ? 'added' : ''}" data-word="${w.word}" data-phonetic="${w.phonetic}" data-meaning="${w.meaning}">
                     ${isAdded ? '已添加' : '添加'}
                 </button>
             </div>
         `;
     }).join('');
+    
+    // 添加播放按钮事件
+    wordsList.querySelectorAll('.play-word-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            playWord(btn.dataset.word, btn);
+        });
+    });
+    
+    // 添加单词点击播放事件
+    wordsList.querySelectorAll('.word[data-word]').forEach(span => {
+        span.addEventListener('click', () => {
+            playWord(span.dataset.word, span);
+        });
+    });
     
     // 添加单词按钮事件
     wordsList.querySelectorAll('.add-btn').forEach(btn => {
@@ -2114,12 +2142,24 @@ function renderSentences(sentences) {
         <div class="sentence-item">
             <div class="english">
                 <span class="english-text">${s.english}</span>
-                <button class="play-sentence-btn" onclick="playSentence('${s.english.replace(/'/g, "\\'")}', this)" title="播放句子">🔊</button>
+                <button class="play-sentence-btn" data-sentence="${index}" title="播放句子">🔊</button>
             </div>
             <div class="chinese">${s.chinese}</div>
             <div class="explanation">💡 ${s.explanation}</div>
         </div>
     `).join('');
+    
+    // 存储句子数据供播放使用
+    sentencesList._sentences = sentences;
+    
+    // 添加播放按钮事件
+    sentencesList.querySelectorAll('.play-sentence-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const index = parseInt(btn.dataset.sentence);
+            const sentence = sentencesList._sentences[index].english;
+            playSentence(sentence, btn);
+        });
+    });
 }
 
 // 渲染题目
@@ -2299,18 +2339,32 @@ function renderChapterWords(words) {
             <div class="word-item">
                 <div class="word-info">
                     <div>
-                        <span class="word" onclick="playWord('${w.word}', this)">${w.word}</span>
+                        <span class="word" data-word="${w.word}">${w.word}</span>
                         <span class="phonetic">${w.phonetic}</span>
                     </div>
                     <div class="meaning">${w.meaning}</div>
                 </div>
-                <button class="play-word-btn" onclick="playWord('${w.word}', this)" title="播放发音">🔊</button>
+                <button class="play-word-btn" data-word="${w.word}" title="播放发音">🔊</button>
                 <button class="add-btn ${isAdded ? 'added' : ''}" data-word="${w.word}" data-phonetic="${w.phonetic}" data-meaning="${w.meaning}" data-example="${w.example || ''}">
                     ${isAdded ? '已添加' : '添加'}
                 </button>
             </div>
         `;
     }).join('');
+    
+    // 添加播放按钮事件
+    wordsList.querySelectorAll('.play-word-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            playWord(btn.dataset.word, btn);
+        });
+    });
+    
+    // 添加单词点击播放事件
+    wordsList.querySelectorAll('.word[data-word]').forEach(span => {
+        span.addEventListener('click', () => {
+            playWord(span.dataset.word, span);
+        });
+    });
     
     // 添加单词按钮事件
     wordsList.querySelectorAll('.add-btn').forEach(btn => {
