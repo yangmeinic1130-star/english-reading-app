@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>每日英语阅读</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- 主页/文章列表 -->
+        <div id="home-page" class="page active">
+            <header class="header">
+                <h1>每日英语阅读</h1>
+                <p class="subtitle">每天一篇，拓展视野</p>
+            </header>
+            
+            <div class="tab-bar">
+                <button class="tab-btn active" data-tab="articles">文章</button>
+                <button class="tab-btn" data-tab="vocabulary">单词本</button>
+            </div>
+            
+            <div id="articles-container" class="container">
+                <div class="articles-list" id="articles-list"></div>
+            </div>
+            
+            <div id="vocabulary-container" class="container hidden">
+                <div class="vocabulary-list" id="vocabulary-list"></div>
+            </div>
+        </div>
+        
+        <!-- 文章详情页 -->
+        <div id="detail-page" class="page">
+            <header class="header detail-header">
+                <button class="back-btn" id="back-btn">← 返回</button>
+                <h1 id="detail-title"></h1>
+            </header>
+            
+            <div class="container">
+                <div class="article-meta">
+                    <span class="category" id="detail-category"></span>
+                    <span class="date" id="detail-date"></span>
+                </div>
+                
+                <!-- 音频播放器 -->
+                <div class="audio-player">
+                    <button class="play-btn" id="play-btn">▶ 播放音频</button>
+                    <div class="progress-bar">
+                        <div class="progress" id="audio-progress"></div>
+                    </div>
+                    <span class="time" id="audio-time">0:00</span>
+                </div>
+                
+                <!-- 文章内容 -->
+                <div class="article-content" id="article-content"></div>
+                
+                <!-- 中文翻译 -->
+                <div class="translation-section">
+                    <button class="toggle-btn" id="toggle-translation">查看中文翻译 ▼</button>
+                    <div class="translation-content hidden" id="translation-content"></div>
+                </div>
+                
+                <!-- 重点单词 -->
+                <div class="section">
+                    <h2 class="section-title">📚 重点单词</h2>
+                    <div class="words-list" id="words-list"></div>
+                </div>
+                
+                <!-- 重点句型 -->
+                <div class="section">
+                    <h2 class="section-title">✨ 重点句型</h2>
+                    <div class="sentences-list" id="sentences-list"></div>
+                </div>
+                
+                <!-- 题目 -->
+                <div class="section">
+                    <h2 class="section-title">📝 阅读理解</h2>
+                    <div class="questions-list" id="questions-list"></div>
+                    <button class="submit-btn" id="submit-answers">提交答案</button>
+                    <div class="result hidden" id="quiz-result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 单词详情弹窗 -->
+    <div class="modal hidden" id="word-modal">
+        <div class="modal-content">
+            <button class="close-btn" id="close-modal">×</button>
+            <div class="word-detail" id="word-detail"></div>
+            <button class="add-word-btn" id="add-word-btn">加入单词本</button>
+        </div>
+    </div>
+    
+    <!-- 提示消息 -->
+    <div class="toast hidden" id="toast"></div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
