@@ -377,6 +377,11 @@ body {
     font-size: 16px;
     font-weight: 600;
     color: var(--primary-dark);
+    cursor: pointer;
+}
+
+.word-item .word:hover {
+    text-decoration: underline;
 }
 
 .word-item .phonetic {
@@ -389,6 +394,31 @@ body {
     font-size: 13px;
     color: var(--text-secondary);
     margin-top: 4px;
+}
+
+.word-item .play-word-btn {
+    background: transparent;
+    border: none;
+    color: var(--accent-color);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 8px;
+    margin-right: 8px;
+    transition: transform 0.2s;
+}
+
+.word-item .play-word-btn:active {
+    transform: scale(1.2);
+}
+
+.word-item .play-word-btn.playing {
+    color: var(--primary-color);
+    animation: pulse 0.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
 }
 
 .word-item .add-btn {
@@ -431,6 +461,33 @@ body {
     color: var(--text-primary);
     margin-bottom: 8px;
     font-style: italic;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sentence-item .english-text {
+    flex: 1;
+}
+
+.sentence-item .play-sentence-btn {
+    background: transparent;
+    border: none;
+    color: var(--accent-color);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+}
+
+.sentence-item .play-sentence-btn:active {
+    transform: scale(1.2);
+}
+
+.sentence-item .play-sentence-btn.playing {
+    color: var(--primary-color);
+    animation: pulse 0.5s infinite;
 }
 
 .sentence-item .chinese {
@@ -590,6 +647,11 @@ body {
     font-size: 18px;
     font-weight: 600;
     color: var(--primary-dark);
+    cursor: pointer;
+}
+
+.vocabulary-item .word:hover {
+    text-decoration: underline;
 }
 
 .vocabulary-item .phonetic {
@@ -602,6 +664,26 @@ body {
     font-size: 14px;
     color: var(--text-secondary);
     margin-top: 4px;
+}
+
+.vocabulary-item .play-word-btn {
+    background: transparent;
+    border: none;
+    color: var(--accent-color);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px 8px;
+    margin-right: 8px;
+    transition: transform 0.2s;
+}
+
+.vocabulary-item .play-word-btn:active {
+    transform: scale(1.2);
+}
+
+.vocabulary-item .play-word-btn.playing {
+    color: var(--primary-color);
+    animation: pulse 0.5s infinite;
 }
 
 .vocabulary-item .delete-btn {
@@ -1828,11 +1910,12 @@ function renderVocabularyList() {
         <div class="vocabulary-item" style="animation-delay: ${index * 0.05}s">
             <div class="word-info">
                 <div>
-                    <span class="word">${item.word}</span>
+                    <span class="word" onclick="playWord('${item.word}', this)">${item.word}</span>
                     <span class="phonetic">${item.phonetic}</span>
                 </div>
                 <div class="meaning">${item.meaning}</div>
             </div>
+            <button class="play-word-btn" onclick="playWord('${item.word}', this)" title="播放发音">🔊</button>
             <button class="delete-btn" data-word="${item.word}">×</button>
         </div>
     `).join('');
@@ -1977,11 +2060,12 @@ function renderWords(words) {
             <div class="word-item">
                 <div class="word-info">
                     <div>
-                        <span class="word">${w.word}</span>
+                        <span class="word" onclick="playWord('${w.word}', this)">${w.word}</span>
                         <span class="phonetic">${w.phonetic}</span>
                     </div>
                     <div class="meaning">${w.meaning}</div>
                 </div>
+                <button class="play-word-btn" onclick="playWord('${w.word}', this)" title="播放发音">🔊</button>
                 <button class="add-btn ${isAdded ? 'added' : ''}" data-word="${w.word}" data-phonetic="${w.phonetic}" data-meaning="${w.meaning}">
                     ${isAdded ? '已添加' : '添加'}
                 </button>
@@ -2009,9 +2093,12 @@ function renderWords(words) {
 // 渲染句型
 function renderSentences(sentences) {
     const sentencesList = document.getElementById('sentences-list');
-    sentencesList.innerHTML = sentences.map(s => `
+    sentencesList.innerHTML = sentences.map((s, index) => `
         <div class="sentence-item">
-            <div class="english">${s.english}</div>
+            <div class="english">
+                <span class="english-text">${s.english}</span>
+                <button class="play-sentence-btn" onclick="playSentence('${s.english.replace(/'/g, "\\'")}', this)" title="播放句子">🔊</button>
+            </div>
             <div class="chinese">${s.chinese}</div>
             <div class="explanation">💡 ${s.explanation}</div>
         </div>
@@ -2192,11 +2279,12 @@ function renderChapterWords(words) {
             <div class="word-item">
                 <div class="word-info">
                     <div>
-                        <span class="word">${w.word}</span>
+                        <span class="word" onclick="playWord('${w.word}', this)">${w.word}</span>
                         <span class="phonetic">${w.phonetic}</span>
                     </div>
                     <div class="meaning">${w.meaning}</div>
                 </div>
+                <button class="play-word-btn" onclick="playWord('${w.word}', this)" title="播放发音">🔊</button>
                 <button class="add-btn ${isAdded ? 'added' : ''}" data-word="${w.word}" data-phonetic="${w.phonetic}" data-meaning="${w.meaning}" data-example="${w.example || ''}">
                     ${isAdded ? '已添加' : '添加'}
                 </button>
@@ -2439,6 +2527,98 @@ function updateAudioProgress() {
     const minutes = Math.floor(currentSeconds / 60);
     const seconds = currentSeconds % 60;
     document.getElementById('audio-time').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+}
+
+// 播放单词发音
+function playWord(word, element) {
+    if (!speechSynthesis) {
+        return;
+    }
+    
+    // 取消之前的播放
+    speechSynthesis.cancel();
+    
+    // 移除其他元素的播放状态
+    document.querySelectorAll('.play-word-btn.playing, .word.playing').forEach(el => {
+        el.classList.remove('playing');
+    });
+    
+    // 添加播放状态
+    if (element) {
+        element.classList.add('playing');
+    }
+    
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.8; // 稍慢，方便听清
+    utterance.pitch = 1;
+    
+    // 尝试选择英语声音
+    const voices = speechSynthesis.getVoices();
+    const englishVoice = voices.find(v => v.lang.startsWith('en'));
+    if (englishVoice) {
+        utterance.voice = englishVoice;
+    }
+    
+    utterance.onend = function() {
+        if (element) {
+            element.classList.remove('playing');
+        }
+    };
+    
+    utterance.onerror = function() {
+        if (element) {
+            element.classList.remove('playing');
+        }
+    };
+    
+    speechSynthesis.speak(utterance);
+}
+
+// 播放句子发音
+function playSentence(sentence, element) {
+    if (!speechSynthesis) {
+        return;
+    }
+    
+    // 取消之前的播放
+    speechSynthesis.cancel();
+    
+    // 移除其他元素的播放状态
+    document.querySelectorAll('.play-sentence-btn.playing').forEach(el => {
+        el.classList.remove('playing');
+    });
+    
+    // 添加播放状态
+    if (element) {
+        element.classList.add('playing');
+    }
+    
+    const utterance = new SpeechSynthesisUtterance(sentence);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.9;
+    utterance.pitch = 1;
+    
+    // 尝试选择英语声音
+    const voices = speechSynthesis.getVoices();
+    const englishVoice = voices.find(v => v.lang.startsWith('en'));
+    if (englishVoice) {
+        utterance.voice = englishVoice;
+    }
+    
+    utterance.onend = function() {
+        if (element) {
+            element.classList.remove('playing');
+        }
+    };
+    
+    utterance.onerror = function() {
+        if (element) {
+            element.classList.remove('playing');
+        }
+    };
+    
+    speechSynthesis.speak(utterance);
 }
 
 // 预加载语音列表（某些浏览器需要）
