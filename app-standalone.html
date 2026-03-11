@@ -1191,6 +1191,15 @@ body {
             </header>
             
             <div class="container">
+                <!-- 音频播放器 -->
+                <div class="audio-player" id="chapter-audio-player">
+                    <button class="play-btn" id="chapter-play-btn">▶ 播放音频</button>
+                    <div class="progress-bar">
+                        <div class="progress" id="chapter-audio-progress"></div>
+                    </div>
+                    <span class="time" id="chapter-audio-time">0:00</span>
+                </div>
+                
                 <div class="chapter-content" id="chapter-content"></div>
                 
                 <div class="chapter-nav">
@@ -1806,6 +1815,11 @@ let audioProgress = 0;
 let audioInterval = null;
 let newArticlesAdded = false;
 
+// 章节音频播放相关
+let isChapterPlaying = false;
+let chapterAudioProgress = 0;
+let chapterAudioInterval = null;
+
 // DOM 元素
 const homePage = document.getElementById('home-page');
 const detailPage = document.getElementById('detail-page');
@@ -1958,6 +1972,9 @@ function setupEventListeners() {
     // 章节导航
     document.getElementById('prev-chapter').addEventListener('click', navigateChapter.bind(null, -1));
     document.getElementById('next-chapter').addEventListener('click', navigateChapter.bind(null, 1));
+    
+    // 章节音频播放
+    document.getElementById('chapter-play-btn').addEventListener('click', toggleChapterAudio);
     
     // 标签切换
     tabBtns.forEach(btn => {
@@ -2253,6 +2270,9 @@ function openChapter(chapterId) {
     currentChapterId = chapterId;
     const chapter = book.chapters.find(c => c.id === chapterId);
     if (!chapter) return;
+    
+    // 重置章节音频
+    resetChapterAudio();
     
     // 填充内容
     document.getElementById('chapter-title').textContent = `Ch.${chapter.id} ${chapter.title}`;
@@ -2619,6 +2639,138 @@ function playSentence(sentence, element) {
     };
     
     speechSynthesis.speak(utterance);
+}
+
+// 章节音频播放
+let chapterUtterance = null;
+
+function toggleChapterAudio() {
+    if (speechSynthesis && speechSynthesis.paused) {
+        resumeChapterAudio();
+    } else if (isChapterPlaying) {
+        pauseChapterAudio();
+    } else {
+        playChapterAudio();
+    }
+}
+
+function playChapterAudio() {
+    const book = books.find(b => b.id === currentBookId);
+    if (!book) return;
+    const chapter = book.chapters.find(c => c.id === currentChapterId);
+    if (!chapter) return;
+    
+    // 获取章节纯文本内容
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = chapter.content;
+    const textContent = tempDiv.textContent || tempDiv.innerText;
+    
+    if (!speechSynthesis) {
+        alert('您的浏览器不支持语音播放功能');
+        return;
+    }
+    
+    speechSynthesis.cancel();
+    
+    chapterUtterance = new SpeechSynthesisUtterance(textContent);
+    chapterUtterance.lang = 'en-US';
+    chapterUtterance.rate = 0.9;
+    chapterUtterance.pitch = 1;
+    chapterUtterance.volume = 1;
+    
+    const voices = speechSynthesis.getVoices();
+    const englishVoice = voices.find(v => v.lang.startsWith('en'));
+    if (englishVoice) {
+        chapterUtterance.voice = englishVoice;
+    }
+    
+    isChapterPlaying = true;
+    const btn = document.getElementById('chapter-play-btn');
+    btn.textContent = '⏸ 暂停';
+    btn.classList.add('playing');
+    
+    const totalChars = textContent.length;
+    
+    chapterUtterance.onend = function() {
+        resetChapterAudio();
+    };
+    
+    chapterUtterance.onerror = function(event) {
+        if (event.error !== 'interrupted' && event.error !== 'canceled') {
+            resetChapterAudio();
+        }
+    };
+    
+    speechSynthesis.speak(chapterUtterance);
+    
+    chapterAudioInterval = setInterval(() => {
+        if (isChapterPlaying && speechSynthesis.speaking && !speechSynthesis.paused) {
+            chapterAudioProgress += 0.2;
+            if (chapterAudioProgress >= 100) {
+                chapterAudioProgress = 100;
+            }
+            updateChapterAudioProgress();
+        }
+    }, 100);
+}
+
+function pauseChapterAudio() {
+    if (speechSynthesis.speaking && !speechSynthesis.paused) {
+        speechSynthesis.pause();
+        isChapterPlaying = false;
+        const btn = document.getElementById('chapter-play-btn');
+        btn.textContent = '▶ 继续播放';
+        btn.classList.remove('playing');
+        clearInterval(chapterAudioInterval);
+    }
+}
+
+function resumeChapterAudio() {
+    if (speechSynthesis.paused) {
+        speechSynthesis.resume();
+        isChapterPlaying = true;
+        const btn = document.getElementById('chapter-play-btn');
+        btn.textContent = '⏸ 暂停';
+        btn.classList.add('playing');
+        
+        chapterAudioInterval = setInterval(() => {
+            if (isChapterPlaying && speechSynthesis.speaking && !speechSynthesis.paused) {
+                chapterAudioProgress += 0.2;
+                if (chapterAudioProgress >= 100) {
+                    chapterAudioProgress = 100;
+                }
+                updateChapterAudioProgress();
+            }
+        }, 100);
+    }
+}
+
+function resetChapterAudio() {
+    speechSynthesis.cancel();
+    isChapterPlaying = false;
+    chapterAudioProgress = 0;
+    const btn = document.getElementById('chapter-play-btn');
+    if (btn) {
+        btn.textContent = '▶ 播放音频';
+        btn.classList.remove('playing');
+    }
+    clearInterval(chapterAudioInterval);
+    updateChapterAudioProgress();
+}
+
+function updateChapterAudioProgress() {
+    const progressBar = document.getElementById('chapter-audio-progress');
+    const timeDisplay = document.getElementById('chapter-audio-time');
+    if (progressBar) {
+        progressBar.style.width = chapterAudioProgress + '%';
+    }
+    if (timeDisplay) {
+        const totalSeconds = 120;
+        const currentSeconds = Math.floor(totalSeconds * chapterAudioProgress / 100);
+        const minutes = Math.floor(currentSeconds / 60);
+        const seconds = currentSeconds % 60;
+        timeDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
 }
 
 // 预加载语音列表（某些浏览器需要）
