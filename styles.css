@@ -28,6 +28,7 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     min-height: 100vh;
+    font-size: 17px;
 }
 
 #app {
@@ -57,13 +58,13 @@ body {
 }
 
 .header h1 {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 700;
     margin-bottom: 5px;
 }
 
 .header .subtitle {
-    font-size: 14px;
+    font-size: 15px;
     opacity: 0.9;
 }
 
@@ -271,7 +272,7 @@ body {
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: var(--shadow);
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.8;
 }
 
