@@ -1081,6 +1081,34 @@ body {
     border-bottom: 1px dashed var(--primary-color);
 }
 
+/* 章节中文翻译 */
+.chapter-translation {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 2px dashed var(--border-color);
+}
+
+.chapter-translation h4 {
+    color: var(--primary-dark);
+    font-size: 18px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chapter-translation h4::before {
+    content: "🇨🇳";
+}
+
+.chapter-translation p {
+    color: var(--text-secondary);
+    font-size: 17px;
+    line-height: 1.9;
+    margin-bottom: 15px;
+    text-indent: 2em;
+}
+
 /* 章节导航 */
 .chapter-nav {
     display: flex;
@@ -1307,6 +1335,15 @@ const books = [
 <p>"Come here!" called Annie.</p>
 <p>There she was standing under a tall oak tree. "Look," she said. She was pointing at a rope ladder. The longest rope ladder Jack had ever seen.</p>
 <p>"Wow," he whispered. The ladder went all the way up to the top of the tree. There, at the very top, was a tree house.</p>`,
+                translation: `<p>"救命！有怪物！"安妮喊道。</p>
+<p>"是啊，当然，"杰克说。"在宾夕法尼亚州的青蛙溪，真的有怪物。"</p>
+<p>"快跑，杰克！"安妮说。她沿着路跑去。</p>
+<p>天哪！杰克想。这就是他和七岁妹妹在一起的结果。</p>
+<p>安妮总是编造故事。她总是假装。杰克叹了口气。"这最好是真的，"他说。</p>
+<p>杰克离开大路，走进森林。树木被金色的午后阳光照亮。</p>
+<p>"过来！"安妮喊道。</p>
+<p>她正站在一棵高大的橡树下。"看，"她说。她指着一架绳梯。这是杰克见过的最长的绳梯。</p>
+<p>"哇，"他低声说。梯子一直延伸到树顶。在那里，在最顶端，有一座树屋。</p>`,
                 words: [
                     { word: "monster", phonetic: "/ˈmɒnstər/", meaning: "怪物，怪兽", example: "The monster in the story was scary." },
                     { word: "pretending", phonetic: "/prɪˈtendɪŋ/", meaning: "假装", example: "She was pretending to be a princess." },
@@ -1324,6 +1361,13 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>Suddenly, the wind began to blow. The tree house started to spin! It spun faster and faster!</p>
 <p>Jack squeezed his eyes shut. He held on tight to Annie.</p>
 <p>Then everything was still. Absolutely still.</p>`,
+                translation: `<p>"它是从哪里来的？"安妮问道。</p>
+<p>"我不知道，"杰克说。他环顾四周。树屋里摆满了书。有关于花、鸟和世界各地动物的书。</p>
+<p>"看这个！"安妮说。她举起一本关于恐龙的书。封面上是一只无齿翼龙的图片。它是一种会飞的爬行动物。</p>
+<p>"我希望我能看到一只真正的无齿翼龙，"安妮说。</p>
+<p>突然，风开始吹起来。树屋开始旋转！它转得越来越快！</p>
+<p>杰克紧闭双眼。他紧紧抱住安妮。</p>
+<p>然后一切都静止了。完全静止了。</p>`,
                 words: [
                     { word: "reptile", phonetic: "/ˈreptaɪl/", meaning: "爬行动物", example: "A snake is a reptile." },
                     { word: "squeeze", phonetic: "/skwiːz/", meaning: "紧握，挤压", example: "She squeezed my hand." },
@@ -1341,6 +1385,13 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>"We're in the time of the dinosaurs!" said Jack. "The book took us back in time!"</p>
 <p>Annie started down the rope ladder. "Wait!" called Jack. "We have to be careful!"</p>
 <p>But Annie was already on the ground. She walked toward the Triceratops. "Hi, dinosaur!" she said.</p>`,
+                translation: `<p>杰克睁开眼睛。他望向窗外。天空不同了。树木也不同了。</p>
+<p>"我们在哪里？"安妮问道。</p>
+<p>杰克低头看向地面。在他们下方是一个巢穴。巢穴里有两只小恐龙。巢穴旁边是恐龙妈妈。</p>
+<p>那是一只三角龙！一只真正的三角龙！</p>
+<p>"我们在恐龙时代！"杰克说。"这本书把我们带回了过去！"</p>
+<p>安妮开始沿着绳梯往下爬。"等等！"杰克喊道。"我们必须小心！"</p>
+<p>但安妮已经在地上了。她朝三角龙走去。"嗨，恐龙！"她说。</p>`,
                 words: [
                     { word: "Triceratops", phonetic: "/traɪˈserətɒps/", meaning: "三角龙", example: "A Triceratops has three horns." },
                     { word: "careful", phonetic: "/ˈkeərfl/", meaning: "小心的，谨慎的", example: "Be careful when you cross the road." },
@@ -3288,7 +3339,13 @@ function openChapter(chapterId) {
     
     // 填充内容
     document.getElementById('chapter-title').textContent = `Ch.${chapter.id} ${chapter.title}`;
-    document.getElementById('chapter-content').innerHTML = chapter.content;
+    
+    // 显示英文内容和中文翻译
+    let contentHTML = chapter.content;
+    if (chapter.translation) {
+        contentHTML += `<div class="chapter-translation"><h4>中文翻译</h4>${chapter.translation}</div>`;
+    }
+    document.getElementById('chapter-content').innerHTML = contentHTML;
     
     // 渲染章节单词
     renderChapterWords(chapter.words);
