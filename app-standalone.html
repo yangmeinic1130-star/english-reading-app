@@ -3060,6 +3060,53 @@ let audioProgress = 0;
 let audioInterval = null;
 let newArticlesAdded = false;
 
+// 从localStorage加载新文章状态
+function loadNewArticlesStatus() {
+    const saved = localStorage.getItem('newArticlesAdded');
+    if (saved === 'true') {
+        newArticlesAdded = true;
+        // 恢复新文章到文章列表
+        newArticlesPool.forEach(article => {
+            const exists = articles.some(a => a.id === article.id);
+            if (!exists) {
+                article.isNew = true;
+                articles.unshift(article);
+            }
+        });
+    }
+}
+
+// 保存新文章状态
+function saveNewArticlesStatus() {
+    localStorage.setItem('newArticlesAdded', 'true');
+}
+
+// 检查是否需要自动推送新文章（每天一次）
+function checkDailyArticle() {
+    const lastCheck = localStorage.getItem('lastArticleCheck');
+    const today = new Date().toDateString();
+    
+    if (lastCheck !== today) {
+        // 新的一天，自动推送一篇文章
+        localStorage.setItem('lastArticleCheck', today);
+        
+        // 找到未添加的文章
+        const unaddedArticles = newArticlesPool.filter(poolArticle => {
+            return !articles.some(a => a.id === poolArticle.id);
+        });
+        
+        if (unaddedArticles.length > 0) {
+            // 添加第一篇未添加的文章
+            const articleToAdd = unaddedArticles[0];
+            articleToAdd.isNew = true;
+            articles.unshift(articleToAdd);
+            saveNewArticlesStatus();
+            renderArticlesList();
+            showToast('今日新文章已推送！');
+        }
+    }
+}
+
 // 章节音频播放相关
 let isChapterPlaying = false;
 let chapterAudioProgress = 0;
@@ -3087,6 +3134,12 @@ function init() {
     
     // 重新加载单词本数据
     vocabularyList = loadVocabulary();
+    
+    // 加载新文章状态（修复刷新后消失的bug）
+    loadNewArticlesStatus();
+    
+    // 检查每日自动推送
+    checkDailyArticle();
     
     renderArticlesList();
     renderBooksList();
@@ -3140,10 +3193,14 @@ function fetchNewArticles() {
         if (!newArticlesAdded) {
             // 添加新文章到列表开头
             newArticlesPool.forEach(article => {
-                article.isNew = true;
-                articles.unshift(article);
+                const exists = articles.some(a => a.id === article.id);
+                if (!exists) {
+                    article.isNew = true;
+                    articles.unshift(article);
+                }
             });
             newArticlesAdded = true;
+            saveNewArticlesStatus(); // 保存状态到localStorage
         }
         
         renderArticlesList();
