@@ -3058,6 +3058,34 @@ const newArticlesPool = [
             { question: "What color is the frog?", options: ["Green", "Blue", "Bright orange", "Yellow"], answer: 2 },
             { question: "How big is the frog?", options: ["1 cm", "2 cm", "5 cm", "10 cm"], answer: 1 }
         ]
+    },
+    {
+        id: 103,
+        title: "AI Robot Passes Medical Exam",
+        category: "科技",
+        date: "2026-03-13",
+        content: `<p>A new AI robot has passed China's medical exam with flying colors! The robot scored 360 out of 600 points, which is above the passing line.</p>
+<p>This is the first time an AI has passed such a difficult test. The robot can <span class="highlight-word" data-word="diagnose">diagnose</span> many common illnesses and give treatment advice.</p>
+<p>"AI doctors can help real doctors work faster," said a hospital director. "They can check patients' symptoms while humans do the important work."</p>
+<p>However, the AI still needs human doctors to make final decisions. It is a helpful tool, not a replacement for human care.</p>`,
+        translation: `<p>一个新的AI机器人以优异的成绩通过了中国的医学考试！机器人得了360分（满分600分），超过了及格线。</p>
+<p>这是AI首次通过如此困难的考试。机器人可以诊断许多常见疾病并给出治疗建议。</p>
+<p>"AI医生可以帮助真正的医生更快地工作，"一位医院院长说。"它们可以在人类做重要工作的同时检查病人的症状。"</p>
+<p>然而，AI仍然需要人类医生来做最终决定。它是一个有用的工具，而不是人类护理的替代品。</p>`,
+        words: [
+            { word: "diagnose", phonetic: "/ˈdaɪəɡnoʊz/", meaning: "诊断", example: "The doctor can diagnose many diseases." },
+            { word: "symptoms", phonetic: "/ˈsɪmptəmz/", meaning: "症状", example: "Fever and cough are common symptoms." },
+            { word: "treatment", phonetic: "/ˈtriːtmənt/", meaning: "治疗", example: "The doctor gave me treatment advice." }
+        ],
+        sentences: [
+            { english: "AI doctors can help real doctors work faster.", chinese: "AI医生可以帮助真正的医生更快地工作。", explanation: "help sb. do sth. 表示'帮助某人做某事'" },
+            { english: "It is a helpful tool, not a replacement for human care.", chinese: "它是一个有用的工具，而不是人类护理的替代品。", explanation: "not...but... 表示'不是……而是……'" }
+        ],
+        questions: [
+            { question: "What score did the AI robot get?", options: ["260", "360", "460", "560"], answer: 1 },
+            { question: "What can the AI diagnose?", options: ["Only serious illnesses", "Many common illnesses", "No illnesses", "Mental health issues"], answer: 1 },
+            { question: "What do doctors need to do according to the article?", options: ["Be replaced by AI", "Make final decisions", "Stop working", "Learn to code"], answer: 1 }
+        ]
     }
 ];
 
@@ -3457,24 +3485,28 @@ function fetchNewArticles() {
     
     // 模拟加载
     setTimeout(() => {
-        // 检查是否已经添加过
-        if (!newArticlesAdded) {
-            // 添加新文章到列表开头
-            newArticlesPool.forEach(article => {
-                const exists = articles.some(a => a.id === article.id);
-                if (!exists) {
-                    article.isNew = true;
-                    articles.unshift(article);
-                }
-            });
-            newArticlesAdded = true;
-            saveNewArticlesStatus(); // 保存状态到localStorage
+        // 添加所有未添加的新文章到列表开头
+        let addedCount = 0;
+        newArticlesPool.forEach(article => {
+            const exists = articles.some(a => a.id === article.id);
+            if (!exists) {
+                article.isNew = true;
+                articles.unshift(article);
+                addedCount++;
+            }
+        });
+        
+        // 保存状态
+        if (addedCount > 0) {
+            saveNewArticlesStatus();
+            showToast('已获取 ' + addedCount + ' 篇新文章！');
+        } else {
+            showToast('暂无新文章');
         }
         
         renderArticlesList();
         btn.classList.remove('loading');
         btn.disabled = false;
-        showToast('已获取 ' + newArticlesPool.length + ' 篇新文章！');
     }, 1500);
 }
 
