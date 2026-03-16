@@ -1153,325 +1153,6 @@ body {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.6; }
 }
-
-/* ========== 绘本阅读样式 ========== */
-
-/* 绘本卡片 */
-.picturebook-card {
-    background: var(--card-bg);
-    border-radius: 16px;
-    padding: 15px;
-    box-shadow: var(--shadow);
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.picturebook-card:active {
-    transform: scale(0.98);
-}
-
-.picturebook-card .book-cover-img {
-    width: 80px;
-    height: 100px;
-    border-radius: 8px;
-    object-fit: cover;
-    background: var(--border-color);
-    flex-shrink: 0;
-}
-
-.picturebook-card .book-cover-placeholder {
-    width: 80px;
-    height: 100px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #FFE4B5, #FFDAB9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    flex-shrink: 0;
-}
-
-.picturebook-card .book-info {
-    flex: 1;
-}
-
-.picturebook-card h3 {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: var(--text-primary);
-}
-
-.picturebook-card .level-badge {
-    display: inline-block;
-    background: var(--accent-color);
-    color: white;
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 10px;
-    margin-bottom: 5px;
-}
-
-.picturebook-card .book-desc {
-    font-size: 13px;
-    color: var(--text-secondary);
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-/* 绘本阅读页面 */
-.picturebook-reader {
-    max-width: 100%;
-    margin: 0 auto;
-}
-
-/* 绘本页面容器 */
-.page-container {
-    background: var(--card-bg);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    margin-bottom: 15px;
-}
-
-/* 绘本图片 */
-.page-image {
-    width: 100%;
-    aspect-ratio: 4/3;
-    object-fit: contain;
-    background: #f5f5f5;
-}
-
-.page-image-placeholder {
-    width: 100%;
-    aspect-ratio: 4/3;
-    background: linear-gradient(135deg, #FFE4B5, #FFDAB9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 48px;
-}
-
-/* 绘本文字区域 */
-.page-text {
-    padding: 20px;
-    background: var(--card-bg);
-}
-
-.page-text p {
-    font-size: 18px;
-    line-height: 1.8;
-    color: var(--text-primary);
-    margin-bottom: 15px;
-    text-align: justify;
-}
-
-.page-text p:last-child {
-    margin-bottom: 0;
-}
-
-/* 中文翻译（绘本） */
-.page-translation {
-    padding: 15px 20px;
-    background: #FFF9E6;
-    border-top: 1px dashed var(--border-color);
-}
-
-.page-translation p {
-    font-size: 16px;
-    line-height: 1.8;
-    color: var(--text-secondary);
-    margin-bottom: 10px;
-}
-
-.page-translation p:last-child {
-    margin-bottom: 0;
-}
-
-/* 翻页控制 */
-.page-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    padding: 15px;
-    background: var(--card-bg);
-    border-radius: 16px;
-    box-shadow: var(--shadow);
-    margin-bottom: 20px;
-}
-
-.page-nav-btn {
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 25px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.page-nav-btn:active {
-    transform: scale(0.95);
-}
-
-.page-nav-btn:disabled {
-    background: var(--border-color);
-    color: var(--text-light);
-    cursor: not-allowed;
-}
-
-.page-indicator {
-    font-size: 15px;
-    color: var(--text-primary);
-    font-weight: 500;
-    min-width: 60px;
-    text-align: center;
-}
-
-/* 页面缩略图导航 */
-.page-thumbnails {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    padding: 10px 0;
-    margin-bottom: 20px;
-    -webkit-overflow-scrolling: touch;
-}
-
-.page-thumbnails::-webkit-scrollbar {
-    height: 4px;
-}
-
-.page-thumbnails::-webkit-scrollbar-track {
-    background: var(--border-color);
-    border-radius: 2px;
-}
-
-.page-thumbnails::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 2px;
-}
-
-.thumbnail {
-    flex-shrink: 0;
-    width: 50px;
-    height: 65px;
-    border-radius: 6px;
-    overflow: hidden;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: all 0.2s ease;
-    background: var(--border-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-}
-
-.thumbnail.active {
-    border-color: var(--primary-color);
-    transform: scale(1.1);
-}
-
-.thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* 绘本详情页头部信息 */
-.picturebook-info {
-    background: var(--card-bg);
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 15px;
-    box-shadow: var(--shadow);
-}
-
-.picturebook-info h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: var(--text-primary);
-}
-
-.picturebook-info .meta {
-    font-size: 13px;
-    color: var(--text-secondary);
-    margin-bottom: 10px;
-}
-
-.picturebook-info .description {
-    font-size: 14px;
-    color: var(--text-primary);
-    line-height: 1.6;
-}
-
-/* 自动播放控制 */
-.auto-play-control {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 15px;
-    background: var(--card-bg);
-    border-radius: 12px;
-    margin-bottom: 15px;
-}
-
-.auto-play-btn {
-    background: var(--accent-color);
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 13px;
-    cursor: pointer;
-}
-
-.auto-play-btn.playing {
-    background: var(--error-color);
-}
-
-/* 绘本列表 */
-.picturebooks-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-/* 级别分组标题 */
-.level-section {
-    margin-bottom: 20px;
-}
-
-.level-section-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text-primary);
-    padding: 10px 0;
-    border-bottom: 2px solid var(--primary-color);
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.level-section-title .level-num {
-    background: var(--primary-color);
-    color: white;
-    padding: 2px 10px;
-    border-radius: 12px;
-    font-size: 12px;
-}
     </style>
 </head>
 <body>
@@ -1486,7 +1167,6 @@ body {
             <div class="tab-bar">
                 <button class="tab-btn active" data-tab="articles">文章</button>
                 <button class="tab-btn" data-tab="books">桥梁书</button>
-                <button class="tab-btn" data-tab="picturebooks">绘本</button>
                 <button class="tab-btn" data-tab="vocabulary">单词本</button>
             </div>
             
@@ -1499,10 +1179,6 @@ body {
             
             <div id="books-container" class="container hidden">
                 <div class="books-list" id="books-list"></div>
-            </div>
-            
-            <div id="picturebooks-container" class="container hidden">
-                <div class="picturebooks-list" id="picturebooks-list"></div>
             </div>
             
             <div id="vocabulary-container" class="container hidden">
@@ -1619,55 +1295,6 @@ body {
                 </div>
             </div>
         </div>
-        
-        <!-- 绘本阅读页 -->
-        <div id="picturebook-reader-page" class="page">
-            <header class="header detail-header">
-                <button class="back-btn" id="back-from-picturebook">← 返回</button>
-                <h1 id="picturebook-title"></h1>
-            </header>
-            
-            <div class="container">
-                <!-- 绘本信息 -->
-                <div class="picturebook-info">
-                    <h2 id="pb-book-title"></h2>
-                    <p class="meta" id="pb-book-meta"></p>
-                    <p class="description" id="pb-book-desc"></p>
-                </div>
-                
-                <!-- 页面缩略图导航 -->
-                <div class="page-thumbnails" id="page-thumbnails"></div>
-                
-                <!-- 翻页控制 -->
-                <div class="page-nav">
-                    <button class="page-nav-btn" id="prev-page">◀ 上一页</button>
-                    <span class="page-indicator" id="page-indicator">1 / 10</span>
-                    <button class="page-nav-btn" id="next-page">下一页 ▶</button>
-                </div>
-                
-                <!-- 绘本内容区域 -->
-                <div class="picturebook-reader">
-                    <div class="page-container">
-                        <img class="page-image" id="pb-page-image" src="" alt="绘本图片">
-                        <div class="page-image-placeholder hidden" id="pb-page-placeholder">📖</div>
-                    </div>
-                    
-                    <div class="page-text" id="pb-page-text"></div>
-                    
-                    <!-- 中文翻译 -->
-                    <div class="translation-section">
-                        <button class="toggle-btn" id="toggle-pb-translation">查看中文翻译 ▼</button>
-                        <div class="page-translation hidden" id="pb-page-translation"></div>
-                    </div>
-                </div>
-                
-                <!-- 重点单词 -->
-                <div class="section">
-                    <h2 class="section-title">📚 本页单词</h2>
-                    <div class="words-list" id="pb-words-list"></div>
-                </div>
-            </div>
-        </div>
     </div>
     
     <!-- 单词详情弹窗 -->
@@ -1683,902 +1310,6 @@ body {
     <div class="toast hidden" id="toast"></div>
     
     <script>
-// ========== 绘本数据（牛津阅读树 Level 6-9）==========
-const picturebooks = [
-    // ========== Level 6 ==========
-    {
-        id: 1,
-        title: "The Secret of the Sands",
-        titleZh: "沙滩的秘密",
-        level: 6,
-        levelDesc: "Oxford Level 6 | 蓝思 400L-500L",
-        coverEmoji: "🏖️",
-        description: "孩子们在海边发现了一个神秘的瓶子，里面有一张古老的藏宝图。跟随他们一起探索沙滩的秘密！",
-        pages: [
-            {
-                pageNum: 1,
-                imageEmoji: "🌅",
-                text: `<p>It was a bright, sunny morning.</p><p>Max and Mia were staying at their grandma's house by the sea.</p><p>"Let's go to the beach!" said Max.</p>`,
-                translation: `<p>这是一个阳光明媚的早晨。</p><p>Max和Mia住在海边的奶奶家。</p><p>"我们去海滩吧！"Max说。</p>`,
-                words: [
-                    { word: "bright", phonetic: "/braɪt/", meaning: "明亮的", example: "The sun was bright today." },
-                    { word: "sunny", phonetic: "/ˈsʌni/", meaning: "阳光充足的", example: "It was a sunny day." }
-                ]
-            },
-            {
-                pageNum: 2,
-                imageEmoji: "🏃",
-                text: `<p>They ran across the sand.</p><p>The waves crashed on the shore.</p><p>"Look!" shouted Mia. "What's that?"</p>`,
-                translation: `<p>他们跑过沙滩。</p><p>海浪拍打着海岸。</p><p>"看！"Mia喊道。"那是什么？"</p>`,
-                words: [
-                    { word: "crashed", phonetic: "/kræʃt/", meaning: "撞击", example: "The waves crashed loudly." },
-                    { word: "shore", phonetic: "/ʃɔːr/", meaning: "海岸", example: "We walked along the shore." }
-                ]
-            },
-            {
-                pageNum: 3,
-                imageEmoji: "🍾",
-                text: `<p>There was something half-buried in the sand.</p><p>It was an old glass bottle.</p><p>Inside, they could see a piece of paper.</p>`,
-                translation: `<p>有东西半埋在沙子里。</p><p>是一个旧玻璃瓶。</p><p>里面，他们可以看到一张纸。</p>`,
-                words: [
-                    { word: "buried", phonetic: "/ˈberid/", meaning: "埋藏的", example: "The treasure was buried." },
-                    { word: "glass", phonetic: "/ɡlæs/", meaning: "玻璃", example: "She drank from a glass bottle." }
-                ]
-            },
-            {
-                pageNum: 4,
-                imageEmoji: "📜",
-                text: `<p>Max carefully pulled out the cork.</p><p>He shook the bottle.</p><p>A rolled-up map fell out!</p>`,
-                translation: `<p>Max小心地拔出软木塞。</p><p>他摇了摇瓶子。</p><p>一张卷起来的地图掉了出来！</p>`,
-                words: [
-                    { word: "carefully", phonetic: "/ˈkeəfəli/", meaning: "小心地", example: "She carefully opened the box." },
-                    { word: "rolled-up", phonetic: "/rəʊld ʌp/", meaning: "卷起来的", example: "He held a rolled-up newspaper." }
-                ]
-            },
-            {
-                pageNum: 5,
-                imageEmoji: "🗺️",
-                text: `<p>"It's a treasure map!" cried Max.</p><p>The map showed a picture of the beach.</p><p>There was a big X marked on a cave.</p>`,
-                translation: `<p>"是藏宝图！"Max叫道。</p><p>地图显示了海滩的图片。</p><p>在一个洞穴上标记了一个大大的X。</p>`,
-                words: [
-                    { word: "treasure", phonetic: "/ˈtreʒər/", meaning: "宝藏", example: "They found a treasure chest." },
-                    { word: "marked", phonetic: "/mɑːkt/", meaning: "标记的", example: "The map was marked with an X." }
-                ]
-            },
-            {
-                pageNum: 6,
-                imageEmoji: "🕳️",
-                text: `<p>"I know that cave!" said Mia.</p><p>"It's past the big rocks."</p><p>They ran along the beach excitedly.</p>`,
-                translation: `<p>"我知道那个洞穴！"Mia说。</p><p>"就在大岩石过去一点。"</p><p>他们兴奋地沿着海滩跑去。</p>`,
-                words: [
-                    { word: "cave", phonetic: "/keɪv/", meaning: "洞穴", example: "Bats live in the cave." },
-                    { word: "excitedly", phonetic: "/ɪkˈsaɪtɪdli/", meaning: "兴奋地", example: "They talked excitedly." }
-                ]
-            },
-            {
-                pageNum: 7,
-                imageEmoji: "🔍",
-                text: `<p>Inside the dark cave, they looked around.</p><p>"The map says the treasure is under a rock with a star," read Max.</p>`,
-                translation: `<p>在黑暗的洞穴里，他们四处张望。</p><p>"地图上说宝藏在一颗有星星的石头下面，"Max读道。</p>`,
-                words: [
-                    { word: "dark", phonetic: "/dɑːk/", meaning: "黑暗的", example: "The cave was dark." },
-                    { word: "looked around", phonetic: "/lʊkt əˈraʊnd/", meaning: "四处张望", example: "She looked around the room." }
-                ]
-            },
-            {
-                pageNum: 8,
-                imageEmoji: "⭐",
-                text: `<p>Mia found a rock with a star drawn on it.</p><p>They dug in the sand beneath it.</p><p>Clunk! Their spades hit something hard.</p>`,
-                translation: `<p>Mia找到了一块画着星星的石头。</p><p>他们在下面挖沙子。</p><p>当！他们的铲子碰到了硬东西。</p>`,
-                words: [
-                    { word: "beneath", phonetic: "/bɪˈniːθ/", meaning: "在...下面", example: "The cat was beneath the table." },
-                    { word: "dug", phonetic: "/dʌɡ/", meaning: "挖（dig的过去式）", example: "They dug a hole in the sand." }
-                ]
-            },
-            {
-                pageNum: 9,
-                imageEmoji: "📦",
-                text: `<p>It was an old metal box.</p><p>Inside, there were old coins and a necklace.</p><p>"We found the treasure!" they cheered.</p>`,
-                translation: `<p>是一个旧金属盒子。</p><p>里面，有古老的硬币和一条项链。</p><p>"我们找到宝藏了！"他们欢呼道。</p>`,
-                words: [
-                    { word: "metal", phonetic: "/ˈmetl/", meaning: "金属", example: "The box was made of metal." },
-                    { word: "coins", phonetic: "/kɔɪnz/", meaning: "硬币", example: "He collected old coins." }
-                ]
-            },
-            {
-                pageNum: 10,
-                imageEmoji: "🏠",
-                text: `<p>They showed Grandma their find.</p><p>"I think a pirate left this long ago!" she said.</p><p>What an amazing adventure!</p>`,
-                translation: `<p>他们给奶奶看他们的发现。</p><p>"我想很久以前有海盗留下了这个！"她说。</p><p>多么精彩的冒险啊！</p>`,
-                words: [
-                    { word: "pirate", phonetic: "/ˈpaɪrət/", meaning: "海盗", example: "The pirate had a wooden leg." },
-                    { word: "adventure", phonetic: "/ədˈventʃər/", meaning: "冒险", example: "They had a great adventure." }
-                ]
-            }
-        ]
-    },
-    {
-        id: 2,
-        title: "The Lost Key",
-        titleZh: "丢失的钥匙",
-        level: 6,
-        levelDesc: "Oxford Level 6 | 蓝思 400L-500L",
-        coverEmoji: "🔑",
-        description: "Tom在公园里捡到一把古怪的钥匙。这把钥匙能打开什么呢？让我们一起揭开谜团！",
-        pages: [
-            {
-                pageNum: 1,
-                imageEmoji: "🌳",
-                text: `<p>Tom was walking through the park.</p><p>It was a cool autumn day.</p><p>The leaves were falling from the trees.</p>`,
-                translation: `<p>Tom正在穿过公园。</p><p>这是一个凉爽的秋日。</p><p>树叶正从树上飘落。</p>`,
-                words: [
-                    { word: "autumn", phonetic: "/ˈɔːtəm/", meaning: "秋天", example: "The leaves change color in autumn." },
-                    { word: "falling", phonetic: "/ˈfɔːlɪŋ/", meaning: "落下", example: "The rain was falling." }
-                ]
-            },
-            {
-                pageNum: 2,
-                imageEmoji: "👀",
-                text: `<p>Suddenly, something shiny caught his eye.</p><p>He bent down to look.</p><p>It was an old, golden key!</p>`,
-                translation: `<p>突然，有东西闪闪发光引起了他的注意。</p><p>他弯下腰去看。</p><p>是一把古老的金钥匙！</p>`,
-                words: [
-                    { word: "shiny", phonetic: "/ˈʃaɪni/", meaning: "闪亮的", example: "Her shoes were shiny." },
-                    { word: "golden", phonetic: "/ˈɡəʊldən/", meaning: "金色的", example: "She wore a golden necklace." }
-                ]
-            },
-            {
-                pageNum: 3,
-                imageEmoji: "❓",
-                text: `<p>"I wonder what this key opens," thought Tom.</p><p>He looked around the park.</p><p>What could it be for?</p>`,
-                translation: `<p>"我想知道这把钥匙能开什么，"Tom想。</p><p>他环顾公园。</p><p>这可能是用来做什么的呢？</p>`,
-                words: [
-                    { word: "wonder", phonetic: "/ˈwʌndər/", meaning: "想知道", example: "I wonder where she went." },
-                    { word: "looked around", phonetic: "/lʊkt əˈraʊnd/", meaning: "环顾四周", example: "He looked around for his keys." }
-                ]
-            },
-            {
-                pageNum: 4,
-                imageEmoji: "🏠",
-                text: `<p>Tom showed the key to his dad.</p><p>"That's very interesting," said Dad.</p><p>"Let's ask at the old house on the hill."</p>`,
-                translation: `<p>Tom把钥匙给爸爸看。</p><p>"这很有趣，"爸爸说。</p><p>"我们去问问山上那座老房子吧。"</p>`,
-                words: [
-                    { word: "interesting", phonetic: "/ˈɪntrəstɪŋ/", meaning: "有趣的", example: "The book was interesting." },
-                    { word: "hill", phonetic: "/hɪl/", meaning: "小山", example: "They climbed up the hill." }
-                ]
-            },
-            {
-                pageNum: 5,
-                imageEmoji: "👵",
-                text: `<p>Mrs. Green lived in the old house.</p><p>She had lived there for fifty years.</p><p>"Oh my!" she said when she saw the key.</p>`,
-                translation: `<p>Green太太住在那座老房子里。</p><p>她在那里住了五十年了。</p><p>"天哪！"她看到钥匙时说。</p>`,
-                words: [
-                    { word: "fifty", phonetic: "/ˈfɪfti/", meaning: "五十", example: "He is fifty years old." },
-                    { word: "Oh my", phonetic: "/əʊ maɪ/", meaning: "天哪", example: "Oh my! What a surprise!" }
-                ]
-            },
-            {
-                pageNum: 6,
-                imageEmoji: "📦",
-                text: `<p>"That's my grandmother's key!" cried Mrs. Green.</p><p>"It opens a special box in my attic."</p>`,
-                translation: `<p>"那是我祖母的钥匙！"Green太太叫道。</p><p>"它能打开我阁楼里的一个特别的盒子。"</p>`,
-                words: [
-                    { word: "grandmother", phonetic: "/ˈɡrænmʌðər/", meaning: "祖母", example: "My grandmother makes great cookies." },
-                    { word: "attic", phonetic: "/ˈætɪk/", meaning: "阁楼", example: "We store old things in the attic." }
-                ]
-            },
-            {
-                pageNum: 7,
-                imageEmoji: "🪜",
-                text: `<p>They climbed up to the attic.</p><p>It was dusty and full of old things.</p><p>In the corner, there was a wooden chest.</p>`,
-                translation: `<p>他们爬上阁楼。</p><p>那里很尘土飞扬，满是旧东西。</p><p>在角落里，有一个木箱子。</p>`,
-                words: [
-                    { word: "dusty", phonetic: "/ˈdʌsti/", meaning: "布满灰尘的", example: "The old room was dusty." },
-                    { word: "wooden", phonetic: "/ˈwʊdn/", meaning: "木制的", example: "She sat on a wooden chair." }
-                ]
-            },
-            {
-                pageNum: 8,
-                imageEmoji: "🔓",
-                text: `<p>Tom put the key in the lock.</p><p>Click! The chest opened slowly.</p><p>Inside was a beautiful photo album.</p>`,
-                translation: `<p>Tom把钥匙插进锁里。</p><p>咔嚓！箱子慢慢打开了。</p><p>里面是一本漂亮的相册。</p>`,
-                words: [
-                    { word: "lock", phonetic: "/lɒk/", meaning: "锁", example: "She turned the key in the lock." },
-                    { word: "photo album", phonetic: "/ˈfəʊtəʊ ˈælbəm/", meaning: "相册", example: "We looked through the photo album." }
-                ]
-            },
-            {
-                pageNum: 9,
-                imageEmoji: "📸",
-                text: `<p>"These are photos from long ago," said Mrs. Green.</p><p>"Thank you for finding the key, Tom!"</p>`,
-                translation: `<p>"这些是很久以前的照片，"Green太太说。</p><p>"谢谢你找到钥匙，Tom！"</p>`,
-                words: [
-                    { word: "photos", phonetic: "/ˈfəʊtəʊz/", meaning: "照片", example: "She took many photos." },
-                    { word: "long ago", phonetic: "/lɒŋ əˈɡəʊ/", meaning: "很久以前", example: "Dinosaurs lived long ago." }
-                ]
-            },
-            {
-                pageNum: 10,
-                imageEmoji: "😊",
-                text: `<p>Tom felt happy to help.</p><p>"I'm glad I found your key," he said.</p><p>It was a good day for an adventure!</p>`,
-                translation: `<p>Tom很高兴能帮上忙。</p><p>"我很高兴找到了您的钥匙，"他说。</p><p>这是一个适合冒险的好日子！</p>`,
-                words: [
-                    { word: "glad", phonetic: "/ɡlæd/", meaning: "高兴的", example: "I'm glad to see you." },
-                    { word: "help", phonetic: "/help/", meaning: "帮助", example: "Can you help me, please?" }
-                ]
-            }
-        ]
-    },
-    // ========== Level 7 ==========
-    {
-        id: 3,
-        title: "The Hunt for Gold",
-        titleZh: "寻找黄金",
-        level: 7,
-        levelDesc: "Oxford Level 7 | 蓝思 500L-600L",
-        coverEmoji: "💰",
-        description: "爷爷告诉孩子们关于老房子里隐藏的宝藏。他们能找到黄金吗？",
-        pages: [
-            {
-                pageNum: 1,
-                imageEmoji: "📖",
-                text: `<p>One rainy afternoon, Grandpa told the children a story.</p><p>"Our old house has a secret," he said mysteriously.</p>`,
-                translation: `<p>一个下雨的下午，爷爷给孩子们讲了一个故事。</p><p>"我们的老房子有一个秘密，"他神秘地说。</p>`,
-                words: [
-                    { word: "rainy", phonetic: "/ˈreɪni/", meaning: "下雨的", example: "It was a rainy day." },
-                    { word: "mysteriously", phonetic: "/mɪˈstɪəriəsli/", meaning: "神秘地", example: "She smiled mysteriously." }
-                ]
-            },
-            {
-                pageNum: 2,
-                imageEmoji: "👂",
-                text: `<p>"Long ago, my grandfather hid something valuable," continued Grandpa.</p><p>"Nobody has found it for a hundred years!"</p>`,
-                translation: `<p>"很久以前，我的祖父藏了一件珍贵的东西，"爷爷继续说。</p><p>"一百年了，没有人找到它！"</p>`,
-                words: [
-                    { word: "valuable", phonetic: "/ˈvæljuəbl/", meaning: "珍贵的", example: "The painting was valuable." },
-                    { word: "hundred", phonetic: "/ˈhʌndrəd/", meaning: "百", example: "There were a hundred people." }
-                ]
-            },
-            {
-                pageNum: 3,
-                imageEmoji: "👦👧",
-                text: `<p>Tom and Lily looked at each other excitedly.</p><p>"Can we look for it?" asked Tom.</p><p>"Of course!" said Grandpa with a smile.</p>`,
-                translation: `<p>Tom和Lily兴奋地看着对方。</p><p>"我们可以去找吗？"Tom问。</p><p>"当然可以！"爷爷笑着说。</p>`,
-                words: [
-                    { word: "each other", phonetic: "/iːtʃ ˈʌðər/", meaning: "彼此", example: "They looked at each other." },
-                    { word: "Of course", phonetic: "/əv kɔːs/", meaning: "当然", example: "Of course you can come!" }
-                ]
-            },
-            {
-                pageNum: 4,
-                imageEmoji: "🔦",
-                text: `<p>They took a torch and went to the cellar.</p><p>It was dark and a bit spooky.</p><p>"Don't be afraid," said Tom bravely.</p>`,
-                translation: `<p>他们拿上手电筒去了地下室。</p><p>那里很黑，有点可怕。</p><p>"别害怕，"Tom勇敢地说。</p>`,
-                words: [
-                    { word: "torch", phonetic: "/tɔːtʃ/", meaning: "手电筒", example: "Shine the torch here." },
-                    { word: "spooky", phonetic: "/ˈspuːki/", meaning: "可怕的", example: "The old house was spooky." }
-                ]
-            },
-            {
-                pageNum: 5,
-                imageEmoji: "🧱",
-                text: `<p>They searched everywhere.</p><p>Behind the old boxes, under the dusty table.</p><p>Then Lily noticed something strange on the wall.</p>`,
-                translation: `<p>他们到处搜寻。</p><p>在旧箱子后面，在布满灰尘的桌子下面。</p><p>然后Lily注意到墙上有些奇怪的东西。</p>`,
-                words: [
-                    { word: "searched", phonetic: "/sɜːtʃt/", meaning: "搜寻", example: "They searched for the lost dog." },
-                    { word: "noticed", phonetic: "/ˈnəʊtɪst/", meaning: "注意到", example: "She noticed a mistake." }
-                ]
-            },
-            {
-                pageNum: 6,
-                imageEmoji: "🧩",
-                text: `<p>One brick looked different from the others.</p><p>Tom pushed it gently.</p><p>It moved! Behind it was a small hiding place.</p>`,
-                translation: `<p>一块砖看起来和其他的不一样。</p><p>Tom轻轻地推了推它。</p><p>它动了！后面是一个小藏匿处。</p>`,
-                words: [
-                    { word: "brick", phonetic: "/brɪk/", meaning: "砖", example: "The house was made of brick." },
-                    { word: "hiding place", phonetic: "/ˈhaɪdɪŋ pleɪs/", meaning: "藏匿处", example: "The cat found a hiding place." }
-                ]
-            },
-            {
-                pageNum: 7,
-                imageEmoji: "👜",
-                text: `<p>Inside was a small leather bag.</p><p>It was heavy!</p><p>With shaking hands, Tom opened it.</p>`,
-                translation: `<p>里面是一个小皮袋。</p><p>它很重！</p><p>Tom用颤抖的手打开了它。</p>`,
-                words: [
-                    { word: "leather", phonetic: "/ˈleðər/", meaning: "皮革", example: "She wore leather shoes." },
-                    { word: "shaking", phonetic: "/ˈʃeɪkɪŋ/", meaning: "颤抖的", example: "His hands were shaking with cold." }
-                ]
-            },
-            {
-                pageNum: 8,
-                imageEmoji: "✨",
-                text: `<p>Out tumbled several gold coins!</p><p>They sparkled in the torchlight.</p><p>"We found it!" whispered Lily.</p>`,
-                translation: `<p>滚出来好几枚金币！</p><p>它们在手电筒的光下闪闪发光。</p><p>"我们找到了！"Lily低声说。</p>`,
-                words: [
-                    { word: "tumbled", phonetic: "/ˈtʌmbld/", meaning: "滚落", example: "The rocks tumbled down." },
-                    { word: "sparkled", phonetic: "/ˈspɑːkld/", meaning: "闪闪发光", example: "Her eyes sparkled with joy." }
-                ]
-            },
-            {
-                pageNum: 9,
-                imageEmoji: "🏃",
-                text: `<p>They ran back upstairs to show Grandpa.</p><p>His eyes filled with happy tears.</p><p>"You found the family treasure!" he said proudly.</p>`,
-                translation: `<p>他们跑上楼给爷爷看。</p><p>他的眼眶里充满了幸福的泪水。</p><p>"你们找到了家族宝藏！"他自豪地说。</p>`,
-                words: [
-                    { word: "upstairs", phonetic: "/ˌʌpˈsteəz/", meaning: "楼上", example: "She went upstairs to bed." },
-                    { word: "proudly", phonetic: "/ˈpraʊdli/", meaning: "自豪地", example: "He showed his work proudly." }
-                ]
-            },
-            {
-                pageNum: 10,
-                imageEmoji: "🏛️",
-                text: `<p>Grandpa took them to a museum.</p><p>The experts said the coins were very old and rare.</p><p>What an amazing discovery!</p>`,
-                translation: `<p>爷爷带他们去了博物馆。</p><p>专家说这些硬币非常古老稀有。</p><p>多么惊人的发现啊！</p>`,
-                words: [
-                    { word: "museum", phonetic: "/mjuˈziːəm/", meaning: "博物馆", example: "We visited the museum yesterday." },
-                    { word: "rare", phonetic: "/reər/", meaning: "稀有的", example: "This flower is very rare." }
-                ]
-            }
-        ]
-    },
-    {
-        id: 4,
-        title: "The Broken Roof",
-        titleZh: "破损的屋顶",
-        level: 7,
-        levelDesc: "Oxford Level 7 | 蓝思 500L-600L",
-        coverEmoji: "🏚️",
-        description: "一场暴风雨损坏了学校的屋顶。孩子们想出了一个帮助修复的办法。",
-        pages: [
-            {
-                pageNum: 1,
-                imageEmoji: "⛈️",
-                text: `<p>Last night, a terrible storm hit the town.</p><p>The wind howled and the rain poured down.</p><p>Everyone stayed safe inside their homes.</p>`,
-                translation: `<p>昨天晚上，一场可怕的暴风雨袭击了小镇。</p><p>狂风呼啸，大雨倾盆。</p><p>大家都安全地待在家里。</p>`,
-                words: [
-                    { word: "terrible", phonetic: "/ˈterəbl/", meaning: "可怕的", example: "There was a terrible accident." },
-                    { word: "howled", phonetic: "/haʊld/", meaning: "呼啸", example: "The wind howled outside." }
-                ]
-            },
-            {
-                pageNum: 2,
-                imageEmoji: "🏫",
-                text: `<p>The next morning, the children went to school.</p><p>But something was wrong.</p><p>Part of the school roof had fallen in!</p>`,
-                translation: `<p>第二天早上，孩子们去上学。</p><p>但有些不对劲。</p><p>学校的一部分屋顶塌了！</p>`,
-                words: [
-                    { word: "roof", phonetic: "/ruːf/", meaning: "屋顶", example: "The roof was covered with snow." },
-                    { word: "fallen in", phonetic: "/ˈfɔːlən ɪn/", meaning: "塌陷", example: "The old roof had fallen in." }
-                ]
-            },
-            {
-                pageNum: 3,
-                imageEmoji: "😢",
-                text: `<p>"We can't have lessons here," said Mrs. Baker sadly.</p><p>"It's too dangerous."</p><p>The children felt disappointed.</p>`,
-                translation: `<p>"我们不能在这里上课了，"Baker太太难过地说。</p><p>"这太危险了。"</p><p>孩子们感到很失望。</p>`,
-                words: [
-                    { word: "dangerous", phonetic: "/ˈdeɪndʒərəs/", meaning: "危险的", example: "Swimming alone can be dangerous." },
-                    { word: "disappointed", phonetic: "/ˌdɪsəˈpɔɪntɪd/", meaning: "失望的", example: "She looked disappointed." }
-                ]
-            },
-            {
-                pageNum: 4,
-                imageEmoji: "💡",
-                text: `<p>"Wait!" said Emma. "We can raise money to help!"</p><p>"That's a great idea!" said her friends.</p><p>"Let's have a school fair!"</p>`,
-                translation: `<p>"等等！"Emma说。"我们可以筹钱来帮忙！"</p><p>"这是个好主意！"她的朋友们说。</p><p>"我们来办一个学校义卖会吧！"</p>`,
-                words: [
-                    { word: "raise money", phonetic: "/reɪz ˈmʌni/", meaning: "筹款", example: "They raised money for charity." },
-                    { word: "fair", phonetic: "/feər/", meaning: "集市，义卖会", example: "The school fair was fun." }
-                ]
-            },
-            {
-                pageNum: 5,
-                imageEmoji: "🎨",
-                text: `<p>Everyone worked hard to prepare.</p><p>Some made cakes, some made crafts.</p><p>Others practiced games and shows.</p>`,
-                translation: `<p>大家都努力准备着。</p><p>有的做蛋糕，有的做手工。</p><p>其他的练习游戏和表演节目。</p>`,
-                words: [
-                    { word: "crafts", phonetic: "/krɑːfts/", meaning: "手工艺品", example: "She enjoys making crafts." },
-                    { word: "practiced", phonetic: "/ˈpræktɪst/", meaning: "练习", example: "He practiced the piano every day." }
-                ]
-            },
-            {
-                pageNum: 6,
-                imageEmoji: "🎪",
-                text: `<p>On Saturday, the school fair began.</p><p>Many people came to support them.</p><p>The playground was full of happy faces.</p>`,
-                translation: `<p>星期六，学校义卖会开始了。</p><p>很多人来支持他们。</p><p>操场上满是笑脸。</p>`,
-                words: [
-                    { word: "support", phonetic: "/səˈpɔːt/", meaning: "支持", example: "Thank you for your support." },
-                    { word: "full of", phonetic: "/fʊl əv/", meaning: "充满", example: "The box was full of toys." }
-                ]
-            },
-            {
-                pageNum: 7,
-                imageEmoji: "🎮",
-                text: `<p>There were games, food stalls, and performances.</p><p>The children sang and danced.</p><p>Everyone had a wonderful time.</p>`,
-                translation: `<p>有游戏、小吃摊和表演。</p><p>孩子们唱歌跳舞。</p><p>每个人都玩得很开心。</p>`,
-                words: [
-                    { word: "stalls", phonetic: "/stɔːlz/", meaning: "摊位", example: "There were many stalls at the market." },
-                    { word: "performances", phonetic: "/pəˈfɔːmənsɪz/", meaning: "表演", example: "The performances were amazing." }
-                ]
-            },
-            {
-                pageNum: 8,
-                imageEmoji: "💰",
-                text: `<p>At the end of the day, they counted the money.</p><p>"We raised enough!" shouted Tom.</p><p>The children cheered loudly.</p>`,
-                translation: `<p>一天结束的时候，他们数了钱。</p><p>"我们筹够了！"Tom喊道。</p><p>孩子们大声欢呼。</p>`,
-                words: [
-                    { word: "counted", phonetic: "/ˈkaʊntɪd/", meaning: "数", example: "She counted the money carefully." },
-                    { word: "enough", phonetic: "/ɪˈnʌf/", meaning: "足够", example: "Do we have enough time?" }
-                ]
-            },
-            {
-                pageNum: 9,
-                imageEmoji: "👷",
-                text: `<p>Soon, workers came to fix the roof.</p><p>The children watched as it was repaired.</p><p>They felt proud of what they had done.</p>`,
-                translation: `<p>很快，工人们来修理屋顶了。</p><p>孩子们看着它被修好。</p><p>他们为自己的所作所为感到自豪。</p>`,
-                words: [
-                    { word: "fix", phonetic: "/fɪks/", meaning: "修理", example: "Can you fix my bike?" },
-                    { word: "repaired", phonetic: "/rɪˈpeəd/", meaning: "被修复", example: "The road was repaired." }
-                ]
-            },
-            {
-                pageNum: 10,
-                imageEmoji: "🎉",
-                text: `<p>The school looked better than ever.</p><p>"Thank you, children!" said Mrs. Baker.</p><p>"You showed us what community means."</p>`,
-                translation: `<p>学校看起来比以前更好了。</p><p>"谢谢你们，孩子们！"Baker太太说。</p><p>"你们向我们展示了什么是社区精神。"</p>`,
-                words: [
-                    { word: "community", phonetic: "/kəˈmjuːnəti/", meaning: "社区", example: "Our community is very friendly." },
-                    { word: "means", phonetic: "/miːnz/", meaning: "意味着", example: "This word means 'happy'." }
-                ]
-            }
-        ]
-    },
-    // ========== Level 8 ==========
-    {
-        id: 5,
-        title: "The Evil Genie",
-        titleZh: "邪恶精灵",
-        level: 8,
-        levelDesc: "Oxford Level 8 | 蓝思 600L-700L",
-        coverEmoji: "🧞",
-        description: "Amy发现了一本神奇的魔法书，但书里的精灵并不友善。她必须用智慧战胜邪恶精灵！",
-        pages: [
-            {
-                pageNum: 1,
-                imageEmoji: "📚",
-                text: `<p>Amy loved visiting the old library.</p><p>One day, she found a dusty book on a high shelf.</p><p>It had a strange golden symbol on its cover.</p>`,
-                translation: `<p>Amy喜欢去老图书馆。</p><p>有一天，她在高高的书架上发现了一本满是灰尘的书。</p><p>封面上有一个奇怪的金色符号。</p>`,
-                words: [
-                    { word: "library", phonetic: "/ˈlaɪbrəri/", meaning: "图书馆", example: "I borrowed books from the library." },
-                    { word: "symbol", phonetic: "/ˈsɪmbl/", meaning: "符号", example: "What does this symbol mean?" }
-                ]
-            },
-            {
-                pageNum: 2,
-                imageEmoji: "📖",
-                text: `<p>Curiously, she opened the book.</p><p>Suddenly, purple smoke poured out!</p><p>A deep voice echoed from the pages.</p>`,
-                translation: `<p>好奇地，她打开了书。</p><p>突然，紫色的烟雾涌了出来！</p><p>一个低沉的声音从书页中回荡。</p>`,
-                words: [
-                    { word: "curiously", phonetic: "/ˈkjʊəriəsli/", meaning: "好奇地", example: "She looked at the box curiously." },
-                    { word: "echoed", phonetic: "/ˈekəʊd/", meaning: "回荡", example: "Her voice echoed in the cave." }
-                ]
-            },
-            {
-                pageNum: 3,
-                imageEmoji: "🧞",
-                text: `<p>"I am the Genie of the Book!" the voice boomed.</p><p>"You have freed me, and now I will cause chaos!"</p><p>Amy gasped in horror.</p>`,
-                translation: `<p>"我是书中的精灵！"那个声音轰鸣道。</p><p>"你释放了我，现在我要制造混乱！"</p><p>Amy惊恐地倒吸一口气。</p>`,
-                words: [
-                    { word: "genie", phonetic: "/ˈdʒiːni/", meaning: "精灵", example: "The genie granted three wishes." },
-                    { word: "chaos", phonetic: "/ˈkeɪɒs/", meaning: "混乱", example: "The storm caused chaos." }
-                ]
-            },
-            {
-                pageNum: 4,
-                imageEmoji: "🌪️",
-                text: `<p>The genie flew out of the library.</p><p>Books flew everywhere! Chairs spun around!</p><p>"I must stop him!" thought Amy bravely.</p>`,
-                translation: `<p>精灵飞出了图书馆。</p><p>书到处乱飞！椅子旋转着！</p><p>"我必须阻止他！"Amy勇敢地想。</p>`,
-                words: [
-                    { word: "flew", phonetic: "/fluː/", meaning: "飞（fly的过去式）", example: "The bird flew away." },
-                    { word: "spun", phonetic: "/spʌn/", meaning: "旋转（spin的过去式）", example: "The top spun on the floor." }
-                ]
-            },
-            {
-                pageNum: 5,
-                imageEmoji: "💭",
-                text: `<p>She remembered something from her grandmother's stories.</p><p>Evil genies could be defeated by riddles!</p><p>She chased after the genie.</p>`,
-                translation: `<p>她想起奶奶故事里的一些事情。</p><p>邪恶的精灵可以被谜语打败！</p><p>她追赶着精灵。</p>`,
-                words: [
-                    { word: "defeated", phonetic: "/dɪˈfiːtɪd/", meaning: "被击败", example: "The army was defeated." },
-                    { word: "riddles", phonetic: "/ˈrɪdlz/", meaning: "谜语", example: "Can you solve this riddle?" }
-                ]
-            },
-            {
-                pageNum: 6,
-                imageEmoji: "🏙️",
-                text: `<p>The genie was causing trouble in the town square.</p><p>Water fountains sprayed everyone!</p><p>Pigeons danced in a line!</p>`,
-                translation: `<p>精灵正在城镇广场制造麻烦。</p><p>喷泉向每个人喷水！</p><p>鸽子排成一排跳舞！</p>`,
-                words: [
-                    { word: "square", phonetic: "/skweər/", meaning: "广场", example: "They met in the town square." },
-                    { word: "fountains", phonetic: "/ˈfaʊntɪnz/", meaning: "喷泉", example: "The fountains were beautiful." }
-                ]
-            },
-            {
-                pageNum: 7,
-                imageEmoji: "🗣️",
-                text: `<p>"Genie!" called Amy loudly. "I challenge you to a riddle contest!"</p><p>The genie laughed. "You cannot defeat me!"</p><p>"Let's see about that!" said Amy.</p>`,
-                translation: `<p>"精灵！"Amy大声喊道。"我向你发起猜谜挑战！"</p><p>精灵笑了。"你不可能打败我！"</p><p>"那我们走着瞧！"Amy说。</p>`,
-                words: [
-                    { word: "challenge", phonetic: "/ˈtʃælɪndʒ/", meaning: "挑战", example: "I challenge you to a game." },
-                    { word: "contest", phonetic: "/ˈkɒntest/", meaning: "比赛", example: "She won the singing contest." }
-                ]
-            },
-            {
-                pageNum: 8,
-                imageEmoji: "❓",
-                text: `<p>"What has keys but no locks, space but no room, and you can enter but not go inside?" asked Amy.</p><p>The genie frowned and thought hard.</p>`,
-                translation: `<p>"什么东西有键但没有锁，有空间但没有房间，你可以进入但不能进去？"Amy问。</p><p>精灵皱起眉头，努力思考。</p>`,
-                words: [
-                    { word: "keys", phonetic: "/kiːz/", meaning: "键，钥匙", example: "Piano keys are black and white." },
-                    { word: "frowned", phonetic: "/fraʊnd/", meaning: "皱眉", example: "He frowned at the bad news." }
-                ]
-            },
-            {
-                pageNum: 9,
-                imageEmoji: "⌨️",
-                text: `<p>"I... I don't know!" cried the genie.</p><p>"A keyboard!" shouted Amy triumphantly.</p><p>The genie slowly faded away!</p>`,
-                translation: `<p>"我...我不知道！"精灵叫道。</p><p>"键盘！"Amy胜利地喊道。</p><p>精灵慢慢消失了！</p>`,
-                words: [
-                    { word: "keyboard", phonetic: "/ˈkiːbɔːd/", meaning: "键盘", example: "Type on the keyboard." },
-                    { word: "triumphantly", phonetic: "/traɪˈʌmfəntli/", meaning: "胜利地", example: "She smiled triumphantly." }
-                ]
-            },
-            {
-                pageNum: 10,
-                imageEmoji: "😊",
-                text: `<p>The town returned to normal.</p><p>Amy closed the magic book forever.</p><p>She had saved the day with her quick thinking!</p>`,
-                translation: `<p>小镇恢复了正常。</p><p>Amy永远地合上了魔法书。</p><p>她用敏捷的思维拯救了大家！</p>`,
-                words: [
-                    { word: "returned", phonetic: "/rɪˈtɜːnd/", meaning: "返回", example: "She returned home safely." },
-                    { word: "quick thinking", phonetic: "/kwɪk ˈθɪŋkɪŋ/", meaning: "敏捷的思维", example: "His quick thinking saved lives." }
-                ]
-            }
-        ]
-    },
-    {
-        id: 6,
-        title: "The Strange Beehive",
-        titleZh: "奇怪的蜂巢",
-        level: 8,
-        levelDesc: "Oxford Level 8 | 蓝思 600L-700L",
-        coverEmoji: "🐝",
-        description: "农场里出现了一个奇怪的蜂巢。蜜蜂们行为异常，农场主人的女儿决定调查真相。",
-        pages: [
-            {
-                pageNum: 1,
-                imageEmoji: "🌾",
-                text: `<p>At Sunny Farm, everything was peaceful.</p><p>The cows grazed in the meadow.</p><p>The chickens clucked happily in their coop.</p>`,
-                translation: `<p>在阳光农场，一切都十分宁静。</p><p>奶牛在草地上吃草。</p><p>母鸡们在鸡舍里咯咯地叫着，很开心。</p>`,
-                words: [
-                    { word: "peaceful", phonetic: "/ˈpiːsfl/", meaning: "宁静的", example: "The village was peaceful." },
-                    { word: "grazed", phonetic: "/ɡreɪzd/", meaning: "吃草", example: "Sheep grazed on the hillside." }
-                ]
-            },
-            {
-                pageNum: 2,
-                imageEmoji: "🐝",
-                text: `<p>One morning, Farmer Brown noticed something odd.</p><p>A huge beehive had appeared in the old oak tree.</p><p>But these bees were not normal.</p>`,
-                translation: `<p>一天早上，Brown农夫注意到了一些奇怪的事情。</p><p>一棵老橡树上出现了一个巨大的蜂巢。</p><p>但这些蜜蜂不正常。</p>`,
-                words: [
-                    { word: "odd", phonetic: "/ɒd/", meaning: "奇怪的", example: "That's an odd question." },
-                    { word: "beehive", phonetic: "/ˈbiːhaɪv/", meaning: "蜂巢", example: "Bees live in a beehive." }
-                ]
-            },
-            {
-                pageNum: 3,
-                imageEmoji: "💫",
-                text: `<p>These bees glowed with a strange golden light!</p><p>They flew in perfect patterns.</p><p>And they never stung anyone.</p>`,
-                translation: `<p>这些蜜蜂发着奇怪的金光！</p><p>它们以完美的队形飞行。</p><p>而且它们从不蛰人。</p>`,
-                words: [
-                    { word: "glowed", phonetic: "/ɡləʊd/", meaning: "发光", example: "The fire glowed in the dark." },
-                    { word: "stung", phonetic: "/stʌŋ/", meaning: "蛰（sting的过去式）", example: "A bee stung me yesterday." }
-                ]
-            },
-            {
-                pageNum: 4,
-                imageEmoji: "👧",
-                text: `<p>Mia, the farmer's daughter, was curious.</p><p>"I want to find out about these bees," she said.</p><p>Her father warned her to be careful.</p>`,
-                translation: `<p>农夫的女儿Mia很好奇。</p><p>"我想了解这些蜜蜂，"她说。</p><p>她的父亲提醒她要小心。</p>`,
-                words: [
-                    { word: "curious", phonetic: "/ˈkjʊəriəs/", meaning: "好奇的", example: "The cat was curious about the box." },
-                    { word: "warned", phonetic: "/wɔːnd/", meaning: "警告", example: "She warned him about the danger." }
-                ]
-            },
-            {
-                pageNum: 5,
-                imageEmoji: "🔬",
-                text: `<p>Mia watched the bees for days.</p><p>She noticed they only visited certain flowers.</p><p>And their honey was unusually sweet.</p>`,
-                translation: `<p>Mia观察了这些蜜蜂好几天。</p><p>她注意到它们只访问某些花朵。</p><p>而且它们的蜂蜜格外甜。</p>`,
-                words: [
-                    { word: "certain", phonetic: "/ˈsɜːtn/", meaning: "某些", example: "Only certain people can enter." },
-                    { word: "unusually", phonetic: "/ʌnˈjuːʒuəli/", meaning: "不寻常地", example: "It was unusually cold today." }
-                ]
-            },
-            {
-                pageNum: 6,
-                imageEmoji: "🌙",
-                text: `<p>One night, Mia crept to the oak tree.</p><p>The bees were sleeping, but the hive glowed brightly.</p><p>She heard tiny voices coming from inside!</p>`,
-                translation: `<p>一天晚上，Mia悄悄走到橡树旁。</p><p>蜜蜂们在睡觉，但蜂巢却明亮地发光。</p><p>她听到里面有细小的声音！</p>`,
-                words: [
-                    { word: "crept", phonetic: "/krept/", meaning: "悄悄移动", example: "The cat crept up on the mouse." },
-                    { word: "brightly", phonetic: "/ˈbraɪtli/", meaning: "明亮地", example: "The stars shone brightly." }
-                ]
-            },
-            {
-                pageNum: 7,
-                imageEmoji: "🧚",
-                text: `<p>Inside the hive were tiny fairies!</p><p>They were making special honey with magic dust.</p><p>"Welcome, Mia," said the fairy queen.</p>`,
-                translation: `<p>蜂巢里是小精灵！</p><p>它们正在用魔法粉末制作特殊的蜂蜜。</p><p>"欢迎你，Mia，"精灵女王说。</p>`,
-                words: [
-                    { word: "fairies", phonetic: "/ˈfeəriz/", meaning: "精灵", example: "Fairies live in the forest." },
-                    { word: "queen", phonetic: "/kwiːn/", meaning: "女王", example: "The queen wore a crown." }
-                ]
-            },
-            {
-                pageNum: 8,
-                imageEmoji: "🍯",
-                text: `<p>"Our magic honey brings happiness," explained the queen.</p><p>"We chose your farm because the flowers here are pure."</p><p>Mia was amazed!</p>`,
-                translation: `<p>"我们的魔法蜂蜜会带来快乐，"女王解释道。</p><p>"我们选择你的农场是因为这里的花朵很纯净。"</p><p>Mia感到很惊讶！</p>`,
-                words: [
-                    { word: "explained", phonetic: "/ɪkˈspleɪnd/", meaning: "解释", example: "She explained the rules to me." },
-                    { word: "pure", phonetic: "/pjʊər/", meaning: "纯净的", example: "The water was pure and clean." }
-                ]
-            },
-            {
-                pageNum: 9,
-                imageEmoji: "🤫",
-                text: `<p>"Will you keep our secret?" asked the queen.</p><p>"I promise," said Mia solemnly.</p><p>The fairies gave her a jar of magic honey.</p>`,
-                translation: `<p>"你会保守我们的秘密吗？"女王问。</p><p>"我保证，"Mia郑重地说。</p><p>精灵们给了她一罐魔法蜂蜜。</p>`,
-                words: [
-                    { word: "secret", phonetic: "/ˈsiːkrət/", meaning: "秘密", example: "Can you keep a secret?" },
-                    { word: "solemnly", phonetic: "/ˈsɒləmli/", meaning: "郑重地", example: "He nodded solemnly." }
-                ]
-            },
-            {
-                pageNum: 10,
-                imageEmoji: "✨",
-                text: `<p>From that day on, the farm flourished.</p><p>Everyone who tasted the honey smiled with joy.</p><p>And Mia always protected her tiny friends.</p>`,
-                translation: `<p>从那天起，农场繁荣起来。</p><p>每个尝过蜂蜜的人都开心地笑了。</p><p>Mia总是保护着她的小朋友们。</p>`,
-                words: [
-                    { word: "flourished", phonetic: "/ˈflʌrɪʃt/", meaning: "繁荣", example: "The business flourished." },
-                    { word: "protected", phonetic: "/prəˈtektɪd/", meaning: "保护", example: "She protected her younger brother." }
-                ]
-            }
-        ]
-    },
-    // ========== Level 9 ==========
-    {
-        id: 7,
-        title: "Green Island Kids",
-        titleZh: "绿岛少年",
-        level: 9,
-        levelDesc: "Oxford Level 9 | 蓝思 700L-800L",
-        coverEmoji: "🏝️",
-        description: "一群孩子生活在美丽的绿岛上。当他们发现有人想破坏岛屿时，他们决定采取行动保护家园。",
-        pages: [
-            {
-                pageNum: 1,
-                imageEmoji: "🏝️",
-                text: `<p>Green Island was a beautiful place.</p><p>Crystal clear water surrounded it.</p><p>Colourful birds sang in the tall palm trees.</p>`,
-                translation: `<p>绿岛是一个美丽的地方。</p><p>清澈的水环绕着它。</p><p>五颜六色的鸟儿在高高的棕榈树上歌唱。</p>`,
-                words: [
-                    { word: "crystal clear", phonetic: "/ˌkrɪstl ˈklɪər/", meaning: "清澈透明的", example: "The water was crystal clear." },
-                    { word: "surrounded", phonetic: "/səˈraʊndɪd/", meaning: "环绕", example: "The castle was surrounded by a moat." }
-                ]
-            },
-            {
-                pageNum: 2,
-                imageEmoji: "👦👧👦",
-                text: `<p>Three best friends lived on the island.</p><p>There was brave Leo, clever Maya, and kind Kai.</p><p>They explored every corner of their home.</p>`,
-                translation: `<p>三个好朋友住在岛上。</p><p>有勇敢的Leo，聪明的Maya，和善良的Kai。</p><p>他们探索了家园的每一个角落。</p>`,
-                words: [
-                    { word: "brave", phonetic: "/breɪv/", meaning: "勇敢的", example: "She was very brave." },
-                    { word: "explored", phonetic: "/ɪkˈsplɔːd/", meaning: "探索", example: "They explored the forest." }
-                ]
-            },
-            {
-                pageNum: 3,
-                imageEmoji: "🚢",
-                text: `<p>One day, a big ship arrived.</p><p>Men in suits walked around the island.</p><p>They took photos and made notes.</p>`,
-                translation: `<p>有一天，一艘大船来了。</p><p>穿着西装的人在岛上到处走动。</p><p>他们拍照并做笔记。</p>`,
-                words: [
-                    { word: "suits", phonetic: "/suːts/", meaning: "西装", example: "The men wore dark suits." },
-                    { word: "notes", phonetic: "/nəʊts/", meaning: "笔记", example: "She took notes during the meeting." }
-                ]
-            },
-            {
-                pageNum: 4,
-                imageEmoji: "👂",
-                text: `<p>The children hid behind some bushes.</p><p>"We'll build a big hotel here," said one man.</p><p>"And cut down all these trees!"</p>`,
-                translation: `<p>孩子们躲在灌木丛后面。</p><p>"我们要在这里建一个大酒店，"一个人说。</p><p>"还要砍掉所有这些树！"</p>`,
-                words: [
-                    { word: "bushes", phonetic: "/ˈbʊʃɪz/", meaning: "灌木丛", example: "The rabbit hid in the bushes." },
-                    { word: "cut down", phonetic: "/kʌt daʊn/", meaning: "砍伐", example: "They cut down the old tree." }
-                ]
-            },
-            {
-                pageNum: 5,
-                imageEmoji: "😤",
-                text: `<p>The friends were upset.</p><p>"We can't let them destroy our island!" said Leo.</p><p>"We need a plan," said Maya thoughtfully.</p>`,
-                translation: `<p>朋友们很难过。</p><p>"我们不能让他们破坏我们的岛屿！"Leo说。</p><p>"我们需要一个计划，"Maya沉思着说。</p>`,
-                words: [
-                    { word: "destroy", phonetic: "/dɪˈstrɔɪ/", meaning: "破坏", example: "The fire destroyed the forest." },
-                    { word: "thoughtfully", phonetic: "/ˈθɔːtfəli/", meaning: "沉思地", example: "He nodded thoughtfully." }
-                ]
-            },
-            {
-                pageNum: 6,
-                imageEmoji: "📝",
-                text: `<p>The next day, they gathered all the islanders.</p><p>"We must protect our home!" they said.</p><p>Everyone agreed to help.</p>`,
-                translation: `<p>第二天，他们召集了所有的岛民。</p><p>"我们要保护我们的家园！"他们说。</p><p>每个人都同意帮忙。</p>`,
-                words: [
-                    { word: "gathered", phonetic: "/ˈɡæðəd/", meaning: "聚集", example: "The villagers gathered in the square." },
-                    { word: "islanders", phonetic: "/ˈaɪləndəz/", meaning: "岛民", example: "The islanders were friendly." }
-                ]
-            },
-            {
-                pageNum: 7,
-                imageEmoji: "🪧",
-                text: `<p>They made signs and banners.</p><p>"Save Green Island!" they wrote.</p><p>"Protect our nature!"</p>`,
-                translation: `<p>他们制作了标语和横幅。</p><p>"拯救绿岛！"他们写道。</p><p>"保护我们的自然！"</p>`,
-                words: [
-                    { word: "signs", phonetic: "/saɪnz/", meaning: "标语牌", example: "They held up protest signs." },
-                    { word: "banners", phonetic: "/ˈbænəz/", meaning: "横幅", example: "The banners were colourful." }
-                ]
-            },
-            {
-                pageNum: 8,
-                imageEmoji: "📰",
-                text: `<p>The children contacted a TV station.</p><p>Reporters came to hear their story.</p><p>Soon, people all over the country knew about Green Island.</p>`,
-                translation: `<p>孩子们联系了一家电视台。</p><p>记者来听他们的故事。</p><p>很快，全国各地的人都知道了绿岛。</p>`,
-                words: [
-                    { word: "contacted", phonetic: "/ˈkɒntæktɪd/", meaning: "联系", example: "I contacted him by email." },
-                    { word: "reporters", phonetic: "/rɪˈpɔːtəz/", meaning: "记者", example: "The reporters asked many questions." }
-                ]
-            },
-            {
-                pageNum: 9,
-                imageEmoji: "🎉",
-                text: `<p>The government declared Green Island a protected area!</p><p>No hotels or buildings could be built.</p><p>The island would stay natural forever.</p>`,
-                translation: `<p>政府宣布绿岛为保护区！</p><p>不能建酒店或建筑物。</p><p>这个岛屿将永远保持自然状态。</p>`,
-                words: [
-                    { word: "declared", phonetic: "/dɪˈkleəd/", meaning: "宣布", example: "They declared the winner." },
-                    { word: "protected area", phonetic: "/prəˈtektɪd ˈeəriə/", meaning: "保护区", example: "This is a protected area." }
-                ]
-            },
-            {
-                pageNum: 10,
-                imageEmoji: "🌈",
-                text: `<p>The children were heroes.</p><p>"We did it!" they cheered.</p><p>They had saved their beautiful island home.</p>`,
-                translation: `<p>孩子们成了英雄。</p><p>"我们成功了！"他们欢呼道。</p><p>他们拯救了美丽的岛屿家园。</p>`,
-                words: [
-                    { word: "heroes", phonetic: "/ˈhɪərəʊz/", meaning: "英雄", example: "The firefighters were heroes." },
-                    { word: "saved", phonetic: "/seɪvd/", meaning: "拯救", example: "The doctor saved his life." }
-                ]
-            }
-        ]
-    },
-    {
-        id: 8,
-        title: "The Litter Queen",
-        titleZh: "垃圾女王",
-        level: 9,
-        levelDesc: "Oxford Level 9 | 蓝思 700L-800L",
-        coverEmoji: "👑",
-        description: "小镇上突然出现了很多垃圾。孩子们发现是一位神秘的"垃圾女王"在捣乱。他们决定找到她并解决问题。",
-        pages: [
-            {
-                pageNum: 1,
-                imageEmoji: "🏘️",
-                text: `<p>Meadow Town was usually clean and tidy.</p><p>People took pride in their beautiful streets.</p><p>Children played safely in the parks.</p>`,
-                translation: `<p>草地镇通常干净整洁。</p><p>人们为他们美丽的街道感到自豪。</p><p>孩子们在公园里安全地玩耍。</p>`,
-                words: [
-                    { word: "tidy", phonetic: "/ˈtaɪdi/", meaning: "整洁的", example: "Keep your room tidy." },
-                    { word: "pride", phonetic: "/praɪd/", meaning: "自豪", example: "She takes pride in her work." }
-                ]
-            },
-            {
-                pageNum: 2,
-                imageEmoji: "🚯",
-                text: `<p>But one morning, everything changed.</p><p>Rubbish was scattered everywhere!</p><p>Sweet wrappers, cans, and plastic bags.</p>`,
-                translation: `<p>但一天早上，一切都变了。</p><p>垃圾到处都是！</p><p>糖果纸、罐头和塑料袋。</p>`,
-                words: [
-                    { word: "scattered", phonetic: "/ˈskætəd/", meaning: "散落", example: "Toys were scattered on the floor." },
-                    { word: "rubbish", phonetic: "/ˈrʌbɪʃ/", meaning: "垃圾", example: "Please put rubbish in the bin." }
-                ]
-            },
-            {
-                pageNum: 3,
-                imageEmoji: "🧹",
-                text: `<p>The cleaners worked all day to clear it.</p><p>But the next morning, there was even more!</p><p>"Who is doing this?" wondered the mayor.</p>`,
-                translation: `<p>清洁工们整天都在清理。</p><p>但第二天早上，垃圾更多了！</p><p>"是谁在这样做？"市长疑惑道。</p>`,
-                words: [
-                    { word: "cleaners", phonetic: "/ˈkliːnəz/", meaning: "清洁工", example: "The cleaners work hard." },
-                    { word: "mayor", phonetic: "/meər/", meaning: "市长", example: "The mayor visited our school." }
-                ]
-            },
-            {
-                pageNum: 4,
-                imageEmoji: "🌙",
-                text: `<p>Sophie and Jack decided to investigate.</p><p>They hid near the park at night.</p><p>They wanted to catch the culprit.</p>`,
-                translation: `<p>Sophie和Jack决定调查。</p><p>晚上他们躲在公园附近。</p><p>他们想抓住肇事者。</p>`,
-                words: [
-                    { word: "investigate", phonetic: "/ɪnˈvestɪɡeɪt/", meaning: "调查", example: "The police will investigate." },
-                    { word: "culprit", phonetic: "/ˈkʌlprɪt/", meaning: "肇事者", example: "They found the culprit." }
-                ]
-            },
-            {
-                pageNum: 5,
-                imageEmoji: "👠",
-                text: `<p>At midnight, a strange figure appeared.</p><p>A woman wearing a crown made of cans!</p><p>She threw rubbish everywhere, laughing.</p>`,
-                translation: `<p>午夜，一个奇怪的身影出现了。</p><p>一个戴着罐头做的王冠的女人！</p><p>她到处扔垃圾，大笑着。</p>`,
-                words: [
-                    { word: "figure", phonetic: "/ˈfɪɡər/", meaning: "身影", example: "A dark figure stood in the doorway." },
-                    { word: "crown", phonetic: "/kraʊn/", meaning: "王冠", example: "The queen wore a golden crown." }
-                ]
-            },
-            {
-                pageNum: 6,
-                imageEmoji: "😲",
-                text: `<p>"I am the Litter Queen!" she declared.</p><p>"I hate clean places! I will cover everything in rubbish!"</p><p>The children gasped in shock.</p>`,
-                translation: `<p>"我是垃圾女王！"她宣布道。</p><p>"我讨厌干净的地方！我要用垃圾覆盖一切！"</p><p>孩子们震惊地倒吸一口气。</p>`,
-                words: [
-                    { word: "declared", phonetic: "/dɪˈkleəd/", meaning: "宣布", example: "He declared his love for her." },
-                    { word: "shock", phonetic: "/ʃɒk/", meaning: "震惊", example: "The news came as a shock." }
-                ]
-            },
-            {
-                pageNum: 7,
-                imageEmoji: "🗣️",
-                text: `<p>"Why do you do this?" asked Sophie bravely.</p><p>"Because everyone forgot about me!" cried the Queen.</p><p>"I used to be the Recycling Fairy!"</p>`,
-                translation: `<p>"你为什么要这样做？"Sophie勇敢地问。</p><p>"因为大家都忘记了我！"女王哭道。</p><p>"我曾经是回收精灵！"</p>`,
-                words: [
-                    { word: "forgot", phonetic: "/fəˈɡɒt/", meaning: "忘记", example: "I forgot my keys." },
-                    { word: "recycling", phonetic: "/riːˈsaɪklɪŋ/", meaning: "回收利用", example: "Recycling is good for the environment." }
-                ]
-            },
-            {
-                pageNum: 8,
-                imageEmoji: "💚",
-                text: `<p>"People stopped recycling properly," she sobbed.</p><p>"They threw everything away! So I gave up!"</p><p>"But making more rubbish isn't the answer," said Jack.</p>`,
-                translation: `<p>"人们不再正确地回收利用了，"她抽泣着。</p><p>"他们把一切都扔掉了！所以我放弃了！"</p><p>"但是制造更多垃圾不是解决方法，"Jack说。</p>`,
-                words: [
-                    { word: "properly", phonetic: "/ˈprɒpəli/", meaning: "正确地", example: "Please do your work properly." },
-                    { word: "gave up", phonetic: "/ɡeɪv ʌp/", meaning: "放弃", example: "Don't give up!" }
-                ]
-            },
-            {
-                pageNum: 9,
-                imageEmoji: "🤝",
-                text: `<p>"We'll help you," promised Sophie. "We'll teach everyone to recycle again!"</p><p>The Litter Queen's heart began to change.</p><p>"Really? You would do that for me?"</p>`,
-                translation: `<p>"我们会帮助你的，"Sophie承诺道。"我们会教大家再次回收利用！"</p><p>垃圾女王的心开始改变了。</p><p>"真的吗？你们会为我这样做？"</p>`,
-                words: [
-                    { word: "promised", phonetic: "/ˈprɒmɪst/", meaning: "承诺", example: "She promised to help." },
-                    { word: "Really", phonetic: "/ˈriːəli/", meaning: "真的", example: "Really? That's amazing!" }
-                ]
-            },
-            {
-                pageNum: 10,
-                imageEmoji: "♻️",
-                text: `<p>The children started a recycling campaign.</p><p>Soon, the town became the cleanest ever!</p><p>The Litter Queen became the Recycling Queen again.</p>`,
-                translation: `<p>孩子们开始了回收活动。</p><p>很快，小镇变得比以往任何时候都干净！</p><p>垃圾女王再次变成了回收女王。</p>`,
-                words: [
-                    { word: "campaign", phonetic: "/kæmˈpeɪn/", meaning: "活动，运动", example: "They started a recycling campaign." },
-                    { word: "cleanest", phonetic: "/ˈkliːnɪst/", meaning: "最干净的", example: "This is the cleanest beach." }
-                ]
-            }
-        ]
-    }
-];
-
 // ========== 桥梁书/初章书数据 ==========
 const books = [
     {
@@ -3118,6 +1849,23 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>"Bye," I said. "I love you."</p>
 <p>"I love you too," said Mother.</p>
 <p>Then she left. And I was at school all by myself.</p>`,
+                translation: `<p>我叫Junie B. Jones。B代表Beatrice。不过我不喜欢Beatrice。我只喜欢B，就这样。</p>
+<p>我快六岁了。我要上幼儿园了！我要坐那辆又臭又蠢的校车去。</p>
+<p>不过今天我不坐校车。今天是我上学的第一天。妈妈开车送我。</p>
+<p>"你对第一天感到兴奋吗？"妈妈问。</p>
+<p>"是的，"我说。"不过我也有点害怕。"</p>
+<p>妈妈停下车。她转过身看着我。</p>
+<p>"你害怕什么，Junie B.？"她问。</p>
+<p>"我不知道，"我说。"我觉得我只是害怕上学。"</p>
+<p>妈妈笑了。"没什么好害怕的，"她说。"学校会很有趣！你会交到很多新朋友。你会学到很多新东西。"</p>
+<p>"好吧，"我说。"但是如果我不喜欢那些新东西怎么办？"</p>
+<p>妈妈笑了。"你会喜欢的，"她说。"我保证。"</p>
+<p>然后她开车送我去学校。她陪我走到教室。她陪我待了一会儿。</p>
+<p>但后来她得去上班了。</p>
+<p>"再见，Junie B.！"她说。"祝你度过美好的一天！放学后见！"</p>
+<p>"再见，"我说。"我爱你。"</p>
+<p>"我也爱你，"妈妈说。</p>
+<p>然后她离开了。我一个人留在了学校。</p>`,
                 words: [
                     { word: "kindergarten", phonetic: "/ˈkɪndərɡɑːrtən/", meaning: "幼儿园", example: "I go to kindergarten every day." },
                     { word: "scared", phonetic: "/skerd/", meaning: "害怕的", example: "I'm scared of the dark." },
@@ -3143,6 +1891,21 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>"Eew!" I said. "That's disgusting!"</p>
 <p>"Junie B.!" said Mrs. again. "Please be nice to your new friends."</p>
 <p>I didn't say anything else. I just sat in my chair. And I waited for school to be over.</p>`,
+                translation: `<p>我的老师叫Mrs.。她还有另一个名字。但我只喜欢叫她Mrs.，就这样。</p>
+<p>Mrs.人很好。她有柔软的头发。她身上有花的香味。</p>
+<p>"同学们，这是Junie B. Jones，"她说。"她是新学生。让我们一起欢迎她。"</p>
+<p>大家都看着我。我向他们挥手。"嗨，"我说。</p>
+<p>"嗨，Junie B.！"他们一起说。</p>
+<p>然后Mrs.给我安排了座位。我和另外三个孩子坐在一张桌子旁。</p>
+<p>"这是Lucille，"Mrs.说。"这是Charlotte。这是Paulie Allen Puffer。"</p>
+<p>我看着他们。Lucille有卷发。Charlotte头发上有个蝴蝶结。Paulie Allen Puffer流着鼻涕。</p>
+<p>"Paulie Allen Puffer流鼻涕了，"我说。</p>
+<p>"Junie B.！"Mrs.说。"那样不礼貌。"</p>
+<p>"但这是真的，"我说。"你看。现在还在流呢。"</p>
+<p>Paulie Allen Puffer用袖子擦了擦鼻子。</p>
+<p>"咦！"我说。"太恶心了！"</p>
+<p>"Junie B.！"Mrs.又说。"请对你的新朋友友好一点。"</p>
+<p>我没再说什么。我坐在椅子上。等着放学。</p>`,
                 words: [
                     { word: "welcome", phonetic: "/ˈwelkəm/", meaning: "欢迎", example: "You are welcome here." },
                     { word: "polite", phonetic: "/pəˈlaɪt/", meaning: "有礼貌的", example: "Please be polite to guests." },
@@ -3170,6 +1933,23 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>"I don't like crusts," I said.</p>
 <p>"I do," said Charlotte. "You can give them to me."</p>
 <p>So I gave her my crusts. And I ate the middle part. It was a good lunch.</p>`,
+                translation: `<p>午餐时间，Mrs.带我们去了食堂。那是一个有很多桌子的大房间。</p>
+<p>"这是我们吃午饭的地方，"Mrs.说。"你们可以在学校买午餐，也可以从家里带午餐。"</p>
+<p>我四处张望。食堂很吵。那里还有大孩子。五年级的学生！</p>
+<p>"那些是大孩子，"我告诉Lucille。</p>
+<p>"我知道，"Lucille说。"我哥哥就是五年级的学生。他很高大。"</p>
+<p>我看着那些五年级学生。他们很高。很吵。很吓人。</p>
+<p>"我不喜欢大孩子，"我说。</p>
+<p>"别担心，"Lucille说。"他们不会打扰我们的。"</p>
+<p>我们排队买午餐。我买了一个芝士三明治和巧克力牛奶。</p>
+<p>"真好喝，"我说。"我喜欢巧克力牛奶。"</p>
+<p>"我也是，"Lucille说。"这是我最喜欢的。"</p>
+<p>我们在桌边坐下。我打开牛奶。我喝了一大口。</p>
+<p>"啊，"我说。"真好喝。"</p>
+<p>然后我看着我的三明治。它有面包边。</p>
+<p>"我不喜欢面包边，"我说。</p>
+<p>"我喜欢，"Charlotte说。"你可以给我。"</p>
+<p>所以我把面包边给了她。我吃了中间的部分。这是一顿不错的午餐。</p>`,
                 words: [
                     { word: "cafeteria", phonetic: "/ˌkæfəˈtɪriə/", meaning: "食堂，自助餐厅", example: "We eat lunch in the cafeteria." },
                     { word: "noisy", phonetic: "/ˈnɔɪzi/", meaning: "吵闹的", example: "The classroom is very noisy." },
@@ -3195,6 +1975,21 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>I closed my eyes. But I couldn't rest. I was too worried about the bus.</p>
 <p>What if the bus driver is mean? What if there are mean kids on the bus? What if I get lost?</p>
 <p>I didn't want to ride the stupid smelly bus. Not ever.</p>`,
+                translation: `<p>午饭后，我们休息了一会儿。我们躺在地板上的垫子上。我们必须保持安静。</p>
+<p>我不想休息。我想玩。但Mrs.说每个人都必须休息。</p>
+<p>"闭上眼睛，Junie B.，"她说。"试着睡一会儿。"</p>
+<p>我闭上眼睛。但我没有睡着。我只是在想事情。</p>
+<p>我想到了妈妈。我想到了我的狗Tickle。我想到了那辆又臭又蠢的校车。</p>
+<p>校车！我忘了校车的事！</p>
+<p>放学后，我必须坐校车回家。一个人坐！</p>
+<p>我睁开眼睛。我又感到害怕了。</p>
+<p>"Mrs.？"我小声说。"我不想坐校车。"</p>
+<p>"嘘，"Mrs.说。"现在是休息时间。"</p>
+<p>"但我害怕坐校车，"我说。</p>
+<p>"我们待会儿再说，"Mrs.说。"现在闭上眼睛。"</p>
+<p>我闭上眼睛。但我无法休息。我太担心校车的事了。</p>
+<p>如果校车司机很凶怎么办？如果车上有坏孩子怎么办？如果我迷路了怎么办？</p>
+<p>我不想坐那辆又臭又蠢的校车。永远不想。</p>`,
                 words: [
                     { word: "rest", phonetic: "/rest/", meaning: "休息", example: "I need to rest for a while." },
                     { word: "worried", phonetic: "/ˈwʌrid/", meaning: "担心的", example: "I'm worried about the test." },
@@ -3223,6 +2018,24 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>I started to feel scared. It was too dark. And too quiet.</p>
 <p>I tried to open the door. But it was stuck!</p>
 <p>"Help!" I shouted. "I'm stuck! Help me!"</p>`,
+                translation: `<p>休息时间结束后，我们到外面玩。我们玩捉迷藏。</p>
+<p>我喜欢捉迷藏！我很擅长躲藏。</p>
+<p>"我来抓！"Paulie Allen Puffer喊道。</p>
+<p>"不，我来抓！"另一个男孩喊道。</p>
+<p>他们开始争吵。Mrs.让他们轮流来。</p>
+<p>"Junie B.，你先躲，"Mrs.说。</p>
+<p>我跑去寻找躲藏的地方。我看了看树后面。太小了。我看了看滑梯后面。那里孩子太多了。</p>
+<p>然后我看到了一个完美的地方！储藏室！</p>
+<p>我打开门。里面很黑。但我不害怕。我很勇敢。</p>
+<p>我走进去，关上门。里面非常安静。很黑。很完美！</p>
+<p>我等着有人来找我。我等啊等。</p>
+<p>没有人来。</p>
+<p>我又等了一会儿。还是没有人来。</p>
+<p>"有人吗？"我喊道。"我在这里！"</p>
+<p>没有人回答。</p>
+<p>我开始感到害怕。太黑了。太安静了。</p>
+<p>我试着打开门。但门卡住了！</p>
+<p>"救命！"我大喊。"我被困住了！救救我！"</p>`,
                 words: [
                     { word: "closet", phonetic: "/ˈklɑːzɪt/", meaning: "储藏室，壁橱", example: "My clothes are in the closet." },
                     { word: "brave", phonetic: "/breɪv/", meaning: "勇敢的", example: "The brave firefighter saved the cat." },
@@ -3251,6 +2064,24 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>I looked at Lucille. She smiled at me.</p>
 <p>"Come on, Junie B.," she said. "I'll sit with you."</p>
 <p>"Okay," I said. "But I'm still a little scared."</p>`,
+                translation: `<p>我用力敲着门。"救命！"我大喊。"我被困在储藏室里了！"</p>
+<p>我听到了脚步声。然后门开了。是Mrs.！</p>
+<p>"Junie B.！"她说。"你在里面做什么？"</p>
+<p>"我在玩捉迷藏，"我说。"然后我被困住了。"</p>
+<p>Mrs.抱住我。"你吓死我们了！"她说。"我们到处都找不到你！"</p>
+<p>"我躲得很好，"我说。</p>
+<p>"是的，你躲得太好了！"Mrs.说。"太好了！不要再躲进储藏室了，好吗？"</p>
+<p>"好的，"我说。</p>
+<p>然后铃声响了。放学了！</p>
+<p>"大家排队坐校车！"Mrs.喊道。</p>
+<p>校车！我又忘了校车的事！</p>
+<p>"Mrs.？"我说。"我不想坐校车。妈妈不能来接我吗？"</p>
+<p>"你妈妈在上班，"Mrs.说。"你今天必须坐校车。"</p>
+<p>"但我很害怕，"我说。</p>
+<p>Mrs.蹲下来。她看着我。"没有什么好害怕的，"她说。"校车司机人很好。而且你会和Lucille坐在一起。她和你坐同一辆校车。"</p>
+<p>我看着Lucille。她对我微笑。</p>
+<p>"来吧，Junie B.，"她说。"我陪你坐。"</p>
+<p>"好吧，"我说。"但我还是有点害怕。"</p>`,
                 words: [
                     { word: "banged", phonetic: "/bæŋd/", meaning: "猛敲", example: "He banged on the door." },
                     { word: "footsteps", phonetic: "/ˈfʊtsteps/", meaning: "脚步声", example: "I heard footsteps behind me." },
@@ -3282,6 +2113,27 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>Then the bus drove to my house. Mother was waiting for me.</p>
 <p>"How was your first day?" she asked.</p>
 <p>"It was good," I said. "I love kindergarten!"</p>`,
+                translation: `<p>我和Lucille一起上了校车。校车又大又黄。而且有一股奇怪的味道。</p>
+<p>"所以我叫它又臭又蠢的校车，"我说。</p>
+<p>Lucille笑了。"确实有点味道，"她说。</p>
+<p>我们在座位上坐下。校车开始行驶。</p>
+<p>"抓紧了！"Lucille说。</p>
+<p>我紧紧抓住。校车在路上颠簸着前进。</p>
+<p>"真好玩！"我说。</p>
+<p>"我知道！"Lucille说。"我喜欢坐校车！"</p>
+<p>我看着窗外。我们经过一个公园。我们经过一家商店。我们经过很多房子。</p>
+<p>"哪一栋是你的房子？"我问。</p>
+<p>"那栋！"Lucille说。她指着一栋蓝色的房子。</p>
+<p>"我住在一栋黄色的房子里，"我说。</p>
+<p>"黄色是我最喜欢的颜色，"Lucille说。</p>
+<p>"我也是！"我说。</p>
+<p>我们要成为最好的朋友了！</p>
+<p>校车在Lucille家门口停下。她下了车。</p>
+<p>"再见，Junie B.！"她说。"明天见！"</p>
+<p>"再见！"我说。</p>
+<p>然后校车开到了我家。妈妈在等我。</p>
+<p>"第一天怎么样？"她问。</p>
+<p>"很好，"我说。"我喜欢幼儿园！"</p>`,
                 words: [
                     { word: "tight", phonetic: "/taɪt/", meaning: "紧紧地", example: "Hold on tight!" },
                     { word: "bump", phonetic: "/bʌmp/", meaning: "颠簸", example: "The car went bump over the rock." },
@@ -3310,6 +2162,24 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>Well, maybe it's not so stupid. And maybe it's not so smelly.</p>
 <p>But I still like to call it that. Just because.</p>
 <p>The End</p>`,
+                translation: `<p>第二天早上，我又很早就准备好上学了。</p>
+<p>"我准备好了！"我告诉妈妈。"我现在就准备好了！"</p>
+<p>"你今天想坐校车吗？"妈妈问。</p>
+<p>"想！"我说。"我喜欢校车！它不再又臭又蠢了！"</p>
+<p>妈妈笑了。"是什么让你改变了想法？"</p>
+<p>"我和Lucille坐在一起，"我说。"她是我最好的朋友。有朋友一起坐校车很好玩。"</p>
+<p>"那太好了，"妈妈说。</p>
+<p>校车来了。我跑到门口。</p>
+<p>"再见，妈妈！"我说。"我爱你！"</p>
+<p>"我也爱你！"妈妈说。"祝你度过愉快的一天！"</p>
+<p>我上了校车。Lucille已经在那里了。她给我留了座位！</p>
+<p>"嗨，Junie B.！"她说。</p>
+<p>"嗨，Lucille！"我说。</p>
+<p>我们坐在一起。校车开始行驶。颠簸颠簸颠簸！</p>
+<p>我喜欢这辆又臭又蠢的校车！</p>
+<p>好吧，也许它没那么蠢。也许它也没那么臭。</p>
+<p>但我还是喜欢那样叫它。就是这样。</p>
+<p>全文完</p>`,
                 words: [
                     { word: "morning", phonetic: "/ˈmɔːrnɪŋ/", meaning: "早上", example: "I wake up in the morning." },
                     { word: "changed", phonetic: "/tʃeɪndʒd/", meaning: "改变", example: "He changed his mind." },
@@ -3339,6 +2209,13 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>I have a best friend. Her name is Lucy. We do everything together. We sit together at school. We play together at recess.</p>
 <p>"Ready for school?" asked my little brother, Cheddar.</p>
 <p>"Yes!" I said. "Let's go!"</p>`,
+                translation: `<p>嗨！我是Eva Wingdale。我和家人住在树城。我喜欢写作和画画。</p>
+<p>这是我的日记。我每天都写。我也画画！</p>
+<p>今天是星期一。我早早醒来了。我伸展翅膀，飞向窗户。</p>
+<p>阳光明媚。天空湛蓝。这将是美好的一天！</p>
+<p>我有一个最好的朋友。她叫Lucy。我们一起做所有事情。我们在学校坐在一起。我们在课间休息时一起玩。</p>
+<p>"准备好上学了吗？"我的弟弟Cheddar问。</p>
+<p>"是的！"我说。"走吧！"</p>`,
                 words: [
                     { word: "diary", phonetic: "/ˈdaɪəri/", meaning: "日记", example: "I write in my diary every night." },
                     { word: "stretched", phonetic: "/stretʃt/", meaning: "伸展", example: "She stretched her arms." },
@@ -3356,6 +2233,13 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>I was so mad! My face felt hot. "You're not a good friend!" I shouted.</p>
 <p>Lucy's smile went away. "Well, you're not a good friend either!" she shouted back.</p>
 <p>Then she walked away. I sat at my desk. I wanted to cry. What would I do without my best friend?</p>`,
+                translation: `<p>在学校，发生了一件不好的事。Lucy和我吵架了！</p>
+<p>事情发生在美术课上。我正在画一朵花。Lucy说它看起来像披萨。</p>
+<p>"才不是！"我说。"这是一朵美丽的花！"</p>
+<p>"它看起来像一个放了太多芝士的披萨，"Lucy说。她笑了。</p>
+<p>我好生气！我的脸发烫。"你不是好朋友！"我喊道。</p>
+<p>Lucy的笑容消失了。"好吧，你也不是好朋友！"她回喊道。</p>
+<p>然后她走开了。我坐在座位上。我想哭。没有最好的朋友我该怎么办？</p>`,
                 words: [
                     { word: "fight", phonetic: "/faɪt/", meaning: "吵架，打架", example: "They had a fight over the toy." },
                     { word: "mad", phonetic: "/mæd/", meaning: "生气的", example: "Mom was mad when I broke the vase." },
@@ -3385,6 +2269,13 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>"You have been chosen," said the soldier. "You are going to be a Dragon Master."</p>
 <p>Drake didn't know what to say. He had never seen a dragon. He didn't know anything about dragons!</p>
 <p>"Come," said the soldier. "Your dragon is waiting for you."</p>`,
+                translation: `<p>Drake是一个普通的男孩。他住在一个小村庄里。每天，他都要挖洋葱的坑。那是他的工作。</p>
+<p>但有一天，一切都改变了。一个士兵来到他家门口。</p>
+<p>"你必须跟我走，"士兵说。"国王需要你。"</p>
+<p>"我？"Drake说。"国王为什么需要我？"</p>
+<p>"你被选中了，"士兵说。"你要成为一名驯龙大师。"</p>
+<p>Drake不知道该说什么。他从来没见过龙。他对龙一无所知！</p>
+<p>"来吧，"士兵说。"你的龙在等着你。"</p>`,
                 words: [
                     { word: "ordinary", phonetic: "/ˈɔːrdəneri/", meaning: "普通的", example: "Today was an ordinary day." },
                     { word: "village", phonetic: "/ˈvɪlɪdʒ/", meaning: "村庄", example: "The small village had only ten houses." },
@@ -3403,6 +2294,14 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>Just then, a man in a purple robe appeared. He was Griff, the Dragon Master trainer.</p>
 <p>"Follow me," said Griff. "Your dragon is in the Dragon Stone. You must wake him up."</p>
 <p>Drake's heart beat fast. He was about to meet his dragon!</p>`,
+                translation: `<p>Drake来到城堡。它巨大而美丽。在里面，他遇到了另外三个孩子。</p>
+<p>"我是Ana，"一个黑发女孩说。"我的龙是Koto龙。"</p>
+<p>"我是Rori，"另一个女孩说。"我的龙会喷火！"</p>
+<p>"我是Bo，"一个男孩说。"我的龙会变色。"</p>
+<p>"我是Drake，"他小声说。"我还没有龙。"</p>
+<p>就在这时，一个穿着紫色长袍的人出现了。他是Griff，驯龙大师的训练师。</p>
+<p>"跟我来，"Griff说。"你的龙在龙之石里。你必须唤醒它。"</p>
+<p>Drake的心跳得很快。他即将见到他的龙！</p>`,
                 words: [
                     { word: "castle", phonetic: "/ˈkæsəl/", meaning: "城堡", example: "The king lived in a castle." },
                     { word: "trainer", phonetic: "/ˈtreɪnər/", meaning: "训练师", example: "The dog trainer teaches puppies." },
@@ -3431,6 +2330,12 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>"You should give her a chance," said Mom. "She might be nice."</p>
 <p>"No thank you," said Bean. "I'd rather play with my friends."</p>
 <p>Bean had lots of friends. They played soccer and climbed trees. They rode bikes and played tag. Bean was happy with her friends.</p>`,
+                translation: `<p>Bean七岁了。她和爸爸妈妈还有姐姐Nancy一起住在煎饼街。</p>
+<p>街对面住着一个叫Ivy的女孩。Bean从来没和Ivy一起玩过。</p>
+<p>"Ivy很无聊，"Bean告诉妈妈。"她只是坐着看书。她从来不做什么有趣的事。"</p>
+<p>"你应该给她一个机会，"妈妈说。"她可能人很好。"</p>
+<p>"不用了谢谢，"Bean说。"我宁愿和我的朋友们玩。"</p>
+<p>Bean有很多朋友。他们踢足球、爬树。他们骑自行车、玩抓人游戏。Bean和朋友们在一起很开心。</p>`,
                 words: [
                     { word: "neighbor", phonetic: "/ˈneɪbər/", meaning: "邻居", example: "My neighbor has a big dog." },
                     { word: "boring", phonetic: "/ˈbɔːrɪŋ/", meaning: "无聊的", example: "The movie was boring." },
@@ -3449,6 +2354,14 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>Ivy put down her book. She walked to the bush. She looked under it.</p>
 <p>"I see him," whispered Ivy. "He's right here."</p>
 <p>"Shh!" said Bean. "Don't scare him!"</p>`,
+                translation: `<p>有一天，Bean在院子里玩。她正在抓一只青蛙。但青蛙跳走了。</p>
+<p>Bean追着青蛙跑。她跑过街道。她直接跑进了Ivy的院子！</p>
+<p>Ivy正坐在门前的台阶上。她在看书。当Bean跑过时，她抬起头来。</p>
+<p>"你在做什么？"Ivy问。</p>
+<p>"抓青蛙！"Bean说。"它钻到那丛灌木下面去了！"</p>
+<p>Ivy放下书。她走到灌木丛旁。她往下面看。</p>
+<p>"我看到它了，"Ivy小声说。"它就在这里。"</p>
+<p>"嘘！"Bean说。"别吓到它！"</p>`,
                 words: [
                     { word: "hopped", phonetic: "/hɒpt/", meaning: "单脚跳", example: "The rabbit hopped away." },
                     { word: "steps", phonetic: "/steps/", meaning: "台阶", example: "She sat on the front steps." },
@@ -3478,6 +2391,13 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>Inside the case was the mummy. It was wrapped in white cloth. It looked very old.</p>
 <p>"Cool," said Dink. "I wonder how old it is."</p>
 <p>"Over 3,000 years old," said a voice behind them. It was Mr. Linkletter, the museum director.</p>`,
+            translation: `<p>Dink、Josh和Ruth Rose住在康涅狄格州的绿草坪镇。他们是最好的朋友。</p>
+<p>一个阳光明媚的星期六，他们走到绿草坪博物馆。今天有一个新展览开幕。</p>
+<p>"木乃伊来了！"Josh说。"一具埃及木乃伊！"</p>
+<p>朋友们跑向博物馆。里面聚集了一群人。房间中央有一个玻璃柜。</p>
+<p>柜子里是木乃伊。它被白色布条包裹着。它看起来很古老。</p>
+<p>"太酷了，"Dink说。"我想知道它有多古老。"</p>
+<p>"超过3000年，"身后传来一个声音。是博物馆馆长Linkletter先生。</p>`,
             words: [
                 { word: "museum", phonetic: "/mjuːˈziːəm/", meaning: "博物馆", example: "We visited the museum yesterday." },
                 { word: "exhibit", phonetic: "/ɪɡˈzɪbɪt/", meaning: "展览", example: "The dinosaur exhibit was amazing." },
@@ -3495,6 +2415,13 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>Dink couldn't believe it. Someone stole the mummy?</p>
 <p>He called Josh. "Did you hear? The mummy is gone!"</p>
 <p>"Let's meet at the museum," said Josh. "We have a mystery to solve!"</p>`,
+            translation: `<p>第二天早上，Dink接到了一个电话。是Ruth Rose打来的。</p>
+<p>"快看新闻！"她说。"博物馆出事了！"</p>
+<p>Dink打开电视。记者站在绿草坪博物馆外面。</p>
+<p>"昨晚，小偷闯入了博物馆，"记者说。"他们偷走了埃及木乃伊！"</p>
+<p>Dink不敢相信。有人偷走了木乃伊？</p>
+<p>他给Josh打电话。"你听说了吗？木乃伊不见了！"</p>
+<p>"我们在博物馆见面，"Josh说。"我们有一个谜团要解开！"</p>`,
             words: [
                 { word: "thieves", phonetic: "/θiːvz/", meaning: "小偷(复数)", example: "The thieves stole the diamonds." },
                 { word: "stole", phonetic: "/stoʊl/", meaning: "偷(steal的过去式)", example: "Someone stole my bike." },
@@ -3526,6 +2453,15 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>"Whoever dares to jump through the waterfall can be our king!" said an old monkey.</p>
 <p>The stone monkey did not hesitate. He jumped through the waterfall and discovered the Water Curtain Cave.</p>
 <p>From that day on, he was called the Monkey King, or Sun Wukong.</p>`,
+                translation: `<p>很久以前，花果山上有一块仙石。有一天，石头裂开了。一只小猴子跳了出来！</p>
+<p>这只猴子和其他猴子不一样。他能像风一样行走、奔跑和跳跃。其他猴子都很惊讶。</p>
+<p>"你是谁？"他们问。</p>
+<p>猴子四处张望。"我不知道，"他说。"但我感觉强壮和自由！"</p>
+<p>猴子们一起玩耍。他们爬树吃果子。石猴是所有猴子里最快最勇敢的。</p>
+<p>有一天，猴子们发现了一道美丽的瀑布。瀑布后面有一个秘密洞穴。</p>
+<p>"谁敢跳过瀑布，谁就可以当我们的王！"一只老猴子说。</p>
+<p>石猴毫不犹豫。他跳过瀑布，发现了水帘洞。</p>
+<p>从那天起，他被称为美猴王，也叫孙悟空。</p>`,
                 words: [
                     { word: "magical", phonetic: "/ˈmædʒɪkl/", meaning: "神奇的，有魔力的", example: "The magical stone glowed in the dark." },
                     { word: "cracked", phonetic: "/krækt/", meaning: "破裂的", example: "The egg cracked open." },
@@ -3544,6 +2480,13 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>For seven years, Monkey King studied hard. He learned to transform into 72 different animals and objects. He learned to ride on clouds. He learned to fight with a magic staff.</p>
 <p>One day, the Patriarch called him. "You have learned enough," he said. "But remember: never show off your powers."</p>
 <p>Monkey King bowed. "Thank you, Master!" he said. Then he jumped on a cloud and flew back to his mountain.</p>`,
+                translation: `<p>美猴王想要长生不老。他离开自己的山，去寻找能教他法术的老师。</p>
+<p>他翻山越岭，跨海过洋。终于，他找到了须菩提祖师，一位住在洞里的智慧仙人。</p>
+<p>"师父，请教我！"美猴王说。"我想学习长生不老的秘诀。"</p>
+<p>祖师看着他。"你是个有决心的学生，"他说。"我会教你。"</p>
+<p>七年里，美猴王努力学习。他学会了七十二般变化。他学会了腾云驾雾。他学会了使用金箍棒战斗。</p>
+<p>有一天，祖师叫他。"你已经学得够多了，"他说。"但记住：永远不要炫耀你的法力。"</p>
+<p>美猴王鞠躬。"谢谢师父！"他说。然后他跳上云彩，飞回自己的山。</p>`,
                 words: [
                     { word: "immortality", phonetic: "/ˌɪmɔːrˈtæləti/", meaning: "永生，不朽", example: "The gods have immortality." },
                     { word: "transform", phonetic: "/trænsˈfɔːrm/", meaning: "变形，转变", example: "The wizard can transform into a bird." },
@@ -3563,6 +2506,14 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>"This is mine now!" said Monkey King. He lifted the pillar easily. It became as small as a stick in his hand.</p>
 <p>"I will call it the Ruyi Jingu Bang," said Monkey King. "It will do whatever I wish!"</p>
 <p>He flew away with his new weapon. The Dragon King could only watch him leave.</p>`,
+                translation: `<p>美猴王需要一件武器。他去了海底的龙宫。</p>
+<p>"龙王！"他喊道。"我需要一件武器！"</p>
+<p>龙王很害怕。他给美猴王展示了许多武器，但都不够好。</p>
+<p>"我还有一样东西，"龙王紧张地说。"是一根巨大的铁柱。它发着金光。"</p>
+<p>美猴王看到铁柱。太完美了！它可以变大变小。它可以小如针，也可以大如山。</p>
+<p>"这是我的了！"美猴王说。他轻松地举起铁柱。它在手中变得像一根小棍。</p>
+<p>"我叫它如意金箍棒，"美猴王说。"它会随我心意！"</p>
+<p>他带着新武器飞走了。龙王只能看着他离开。</p>`,
                 words: [
                     { word: "weapon", phonetic: "/ˈwepən/", meaning: "武器", example: "The knight carried a sharp weapon." },
                     { word: "pillar", phonetic: "/ˈpɪlər/", meaning: "柱子", example: "The temple had stone pillars." },
@@ -3581,6 +2532,13 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>Finally, the Jade Buddha had an idea. "Let him guard the peach garden," he said. "The peaches give immortality. He will be happy."</p>
 <p>But Monkey King ate all the magic peaches! He also drank all the wine of the immortals and ate all the pills of life.</p>
 <p>Now he was truly immortal. No one could kill him!</p>`,
+                translation: `<p>玉皇大帝听说了美猴王。他邀请他上天庭做一个小官。</p>
+<p>美猴王起初很高兴。但后来他发现他的工作只是喂马。他生气了！</p>
+<p>"我是齐天大圣！"他喊道。"我才不要当弼马温！"</p>
+<p>他回到自己的山上，自封为齐天大圣。玉皇大帝派军队来抓他，但美猴王太强了。</p>
+<p>最后，玉帝想了个主意。"让他看守蟠桃园，"他说。"蟠桃可以长生不老。他会高兴的。"</p>
+<p>但美猴王吃光了所有的仙桃！他还喝光了仙酒，吃光了仙丹。</p>
+<p>现在他真的长生不老了。没有人能杀他！</p>`,
                 words: [
                     { word: "official", phonetic: "/əˈfɪʃl/", meaning: "官员", example: "He works as a government official." },
                     { word: "capture", phonetic: "/ˈkæptʃər/", meaning: "捕捉，捕获", example: "The police captured the thief." },
@@ -3600,6 +2558,14 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>"Look at this," said Buddha. He showed Monkey King his finger. On it were the words "Great Sage was here."</p>
 <p>Monkey King was shocked. He had never left Buddha's hand!</p>
 <p>Buddha turned his hand into a mountain. It fell on Monkey King and trapped him for 500 years.</p>`,
+                translation: `<p>玉皇大帝向如来佛祖求助。佛祖来阻止美猴王。</p>
+<p>"美猴王，"佛祖说，"你觉得自己很厉害。你能跳出我的手掌心吗？"</p>
+<p>美猴王笑了。"当然可以！"他说。</p>
+<p>他跳了出去。他飞呀飞。他到了五座大山。他看到一根通天的柱子。他在上面写了"齐天大圣到此一游"。</p>
+<p>"我做到了！"他喊道。他跳回佛祖的手心。</p>
+<p>"看这个，"佛祖说。他给美猴王看他的手指。上面写着"齐天大圣到此一游"。</p>
+<p>美猴王惊呆了。他从来没有离开过佛祖的手掌心！</p>
+<p>佛祖把手变成一座山。它压在美猴王身上，把他困了五百年。</p>`,
                 words: [
                     { word: "powerful", phonetic: "/ˈpaʊərfl/", meaning: "强大的", example: "The lion is a powerful animal." },
                     { word: "reached", phonetic: "/riːtʃt/", meaning: "到达", example: "We reached the top of the mountain." },
@@ -3638,6 +2604,13 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>The pig monster was strong, but Monkey King was stronger. Soon, the pig was defeated.</p>
 <p>"Please don't kill me!" cried the pig. "I was a general in Heaven. I made mistakes and was sent to Earth. Let me join you! I want to be good!"</p>
 <p>Tripitaka accepted him. The pig became known as Pigsy, or Zhu Bajie.</p>`,
+                translation: `<p>美猴王笑了。"别担心！我会抓住这个妖怪！"</p>
+<p>他飞到山洞里。在里面，他发现了一个猪妖！猪有一个大鼻子和大耳朵。</p>
+<p>"你是谁？"猪妖问。</p>
+<p>"我是齐天大圣！"美猴王喊道。"投降还是打！"</p>
+<p>猪妖很强壮，但美猴王更强。很快，猪就被打败了。</p>
+<p>"请别杀我！"猪哭着说。"我曾经是天庭的将军。我犯了错被贬下凡间。让我加入你们吧！我想变好！"</p>
+<p>唐僧收留了他。这个猪妖被称为猪八戒。</p>`,
                 words: [
                     { word: "monster", phonetic: "/ˈmɒnstər/", meaning: "怪物", example: "The monster lived in the cave." },
                     { word: "snout", phonetic: "/snaʊt/", meaning: "猪鼻子", example: "The pig had a pink snout." },
@@ -3658,6 +2631,15 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>"Do you want to join us?" asked Tripitaka. "We are going to India to fetch scriptures."</p>
 <p>The monster nodded. "I do! I want to make up for my mistakes."</p>
 <p>He became known as Sandy, or Sha Wujing. Now the team had four members!</p>`,
+                translation: `<p>旅行者们来到了一条宽阔的河流，叫做流沙河。过河很危险。</p>
+<p>"我先去，"美猴王说。他跳上云彩，飞过水面。</p>
+<p>突然，一个妖怪从河里跳出来！他有蓝色的皮肤和狂乱的红头发。他试图抓住唐僧！</p>
+<p>美猴王快速飞回来。他用金箍棒和河妖战斗。</p>
+<p>妖怪很强壮。他使用一根大木棍。他们打了好几个回合。</p>
+<p>"等等！"妖怪喊道。"我认识你！你是美猴王！我也是天庭的将军。我打碎了一盏珍贵的灯，被罚到这里。"</p>
+<p>"你想加入我们吗？"唐僧问。"我们要去印度取经。"</p>
+<p>妖怪点点头。"我想！我想弥补我的过错。"</p>
+<p>他被称为沙悟净。现在队伍有四个成员了！</p>`,
                 words: [
                     { word: "wild", phonetic: "/waɪld/", meaning: "狂野的，乱的", example: "He had wild red hair." },
                     { word: "grab", phonetic: "/ɡræb/", meaning: "抓住，抓取", example: "The thief tried to grab the bag." },
@@ -3679,6 +2661,16 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>The dragon transformed. He became a new white horse! But this horse could talk and understand human speech.</p>
 <p>"I will carry you to India," said the horse. "It is my way to say sorry."</p>
 <p>Now the team was complete: Tripitaka, Monkey King, Pigsy, Sandy, and the White Dragon Horse!</p>`,
+                translation: `<p>队伍穿过一片森林。唐僧骑着一匹白马。</p>
+<p>突然，一条白龙出现了！它一口就把马吃了！</p>
+<p>"我的马！"唐僧哭着说。</p>
+<p>"别担心，师父，"美猴王说。"我会抓住那条龙！"</p>
+<p>美猴王和白龙战斗。龙喷火吐冰。这是一场激烈的战斗。</p>
+<p>最后，龙累了。"停下！"他喊道。"我不是坏龙。我是龙王的儿子。我犯了错被送到这里。我吃你的马是因为我饿了。"</p>
+<p>"你必须弥补你的过错，"唐僧说。</p>
+<p>龙变形了。他变成了一匹新的白马！但这匹马能说话，能听懂人话。</p>
+<p>"我会载你去印度，"马说。"这是我道歉的方式。"</p>
+<p>现在队伍完整了：唐僧、孙悟空、猪八戒、沙悟净和白龙马！</p>`,
                 words: [
                     { word: "fierce", phonetic: "/fɪrs/", meaning: "凶猛的，激烈的", example: "The battle was fierce." },
                     { word: "transformed", phonetic: "/trænsˈfɔːrmd/", meaning: "变形了", example: "The frog transformed into a prince." },
@@ -3697,6 +2689,13 @@ p>"I wish I could see a real Pteranodon," said Annie.</p>
 <p>"Don't worry, Master!" said Monkey King. "As long as I am here, no demon can harm you!"</p>
 <p>And so they continued westward, toward the land of Buddha, toward the precious scriptures, toward their destiny.</p>
 <p>Their great adventure had only just begun!</p>`,
+                translation: `<p>所有成员都到齐了，西行之旅真正开始了。他们面临许多危险。</p>
+<p>有想吃唐僧肉的妖怪。有高耸入云的山峰。有流着火焰的河流。</p>
+<p>但队伍团结协作。孙悟空用他的法术和智慧。猪八戒用他的力量。沙悟净用他的稳重。白龙马忠实地载着唐僧。</p>
+<p>"在我们到达印度之前，会经历八十一难，"唐僧说。"但我们不能放弃。"</p>
+<p>"别担心，师父！"孙悟空说。"只要我在，没有妖怪能伤害你！"</p>
+<p>于是他们继续向西行进，朝佛祖的方向，朝真经的方向，朝他们的命运前进。</p>
+<p>他们伟大的冒险才刚刚开始！</p>`,
                 words: [
                     { word: "demons", phonetic: "/ˈdiːmənz/", meaning: "恶魔，妖怪", example: "The demons lived in the dark forest." },
                     { word: "cleverness", phonetic: "/ˈklevərnəs/", meaning: "聪明，机智", example: "His cleverness saved the day." },
@@ -4386,22 +3385,15 @@ const homePage = document.getElementById('home-page');
 const detailPage = document.getElementById('detail-page');
 const bookChaptersPage = document.getElementById('book-chapters-page');
 const chapterPage = document.getElementById('chapter-page');
-const picturebookReaderPage = document.getElementById('picturebook-reader-page');
 const articlesList = document.getElementById('articles-list');
 const booksList = document.getElementById('books-list');
-const picturebooksList = document.getElementById('picturebooks-list');
 const vocabularyListEl = document.getElementById('vocabulary-list');
 const articlesContainer = document.getElementById('articles-container');
 const booksContainer = document.getElementById('books-container');
-const picturebooksContainer = document.getElementById('picturebooks-container');
 const vocabularyContainer = document.getElementById('vocabulary-container');
 const tabBtns = document.querySelectorAll('.tab-btn');
 const wordModal = document.getElementById('word-modal');
 const toast = document.getElementById('toast');
-
-// 绘本阅读状态
-let currentPicturebook = null;
-let currentPageIndex = 0;
 
 // 初始化
 function init() {
@@ -4419,7 +3411,6 @@ function init() {
     
     renderArticlesList();
     renderBooksList();
-    renderPicturebooksList();
     renderVocabularyList();
     setupEventListeners();
     
@@ -4562,15 +3553,6 @@ function setupEventListeners() {
         }
     });
     
-    // 绘本卡片点击
-    picturebooksList.addEventListener('click', (e) => {
-        const card = e.target.closest('.picturebook-card');
-        if (card) {
-            const id = parseInt(card.dataset.id);
-            openPicturebook(id);
-        }
-    });
-    
     // 返回按钮
     document.getElementById('back-btn').addEventListener('click', goBack);
     document.getElementById('back-from-chapters').addEventListener('click', () => {
@@ -4581,17 +3563,6 @@ function setupEventListeners() {
         chapterPage.classList.remove('active');
         bookChaptersPage.classList.add('active');
     });
-    document.getElementById('back-from-picturebook').addEventListener('click', () => {
-        picturebookReaderPage.classList.remove('active');
-        homePage.classList.add('active');
-    });
-    
-    // 绘本翻页按钮
-    document.getElementById('prev-page').addEventListener('click', () => navigatePicturebookPage(-1));
-    document.getElementById('next-page').addEventListener('click', () => navigatePicturebookPage(1));
-    
-    // 绘本中文翻译切换
-    document.getElementById('toggle-pb-translation').addEventListener('click', togglePicturebookTranslation);
     
     // 章节导航
     document.getElementById('prev-chapter').addEventListener('click', navigateChapter.bind(null, -1));
@@ -4860,22 +3831,14 @@ function switchTab(tab) {
     if (tab === 'articles') {
         articlesContainer.classList.remove('hidden');
         booksContainer.classList.add('hidden');
-        picturebooksContainer.classList.add('hidden');
         vocabularyContainer.classList.add('hidden');
     } else if (tab === 'books') {
         articlesContainer.classList.add('hidden');
         booksContainer.classList.remove('hidden');
-        picturebooksContainer.classList.add('hidden');
-        vocabularyContainer.classList.add('hidden');
-    } else if (tab === 'picturebooks') {
-        articlesContainer.classList.add('hidden');
-        booksContainer.classList.add('hidden');
-        picturebooksContainer.classList.remove('hidden');
         vocabularyContainer.classList.add('hidden');
     } else {
         articlesContainer.classList.add('hidden');
         booksContainer.classList.add('hidden');
-        picturebooksContainer.classList.add('hidden');
         vocabularyContainer.classList.remove('hidden');
         renderVocabularyList();
     }
@@ -5601,217 +4564,6 @@ function showToast(message) {
     setTimeout(() => {
         toast.classList.add('hidden');
     }, 2000);
-}
-
-// ========== 绘本阅读功能 ==========
-
-// 渲染绘本列表
-function renderPicturebooksList() {
-    // 按级别分组
-    const levels = [6, 7, 8, 9];
-    let html = '';
-    
-    levels.forEach(level => {
-        const booksInLevel = picturebooks.filter(book => book.level === level);
-        if (booksInLevel.length > 0) {
-            html += `<div class="level-section">
-                <h3 class="level-section-title">
-                    <span class="level-num">Level ${level}</span>
-                    ${getLevelName(level)}
-                </h3>`;
-            
-            booksInLevel.forEach((book, index) => {
-                html += `
-                <div class="picturebook-card" data-id="${book.id}" style="animation-delay: ${index * 0.1}s">
-                    <div class="book-cover-placeholder">${book.coverEmoji}</div>
-                    <div class="book-info">
-                        <h3>${book.title}</h3>
-                        <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 5px;">${book.titleZh}</p>
-                        <span class="level-badge">${book.levelDesc}</span>
-                        <p class="book-desc">${book.description}</p>
-                    </div>
-                </div>`;
-            });
-            
-            html += `</div>`;
-        }
-    });
-    
-    picturebooksList.innerHTML = html;
-}
-
-// 获取级别名称
-function getLevelName(level) {
-    const names = {
-        6: '初级进阶',
-        7: '中级入门',
-        8: '中级进阶',
-        9: '高级入门'
-    };
-    return names[level] || '';
-}
-
-// 打开绘本阅读
-function openPicturebook(id) {
-    currentPicturebook = picturebooks.find(book => book.id === id);
-    if (!currentPicturebook) return;
-    
-    currentPageIndex = 0;
-    
-    // 设置绘本信息
-    document.getElementById('picturebook-title').textContent = currentPicturebook.title;
-    document.getElementById('pb-book-title').textContent = currentPicturebook.title;
-    document.getElementById('pb-book-meta').textContent = `${currentPicturebook.titleZh} | ${currentPicturebook.levelDesc}`;
-    document.getElementById('pb-book-desc').textContent = currentPicturebook.description;
-    
-    // 渲染缩略图
-    renderPageThumbnails();
-    
-    // 渲染第一页
-    renderPicturebookPage();
-    
-    // 显示绘本阅读页
-    homePage.classList.remove('active');
-    picturebookReaderPage.classList.add('active');
-}
-
-// 渲染页面缩略图
-function renderPageThumbnails() {
-    const container = document.getElementById('page-thumbnails');
-    container.innerHTML = currentPicturebook.pages.map((page, index) => `
-        <div class="thumbnail ${index === currentPageIndex ? 'active' : ''}" data-page="${index}">
-            ${page.imageEmoji}
-        </div>
-    `).join('');
-    
-    // 添加缩略图点击事件
-    container.querySelectorAll('.thumbnail').forEach(thumb => {
-        thumb.addEventListener('click', () => {
-            currentPageIndex = parseInt(thumb.dataset.page);
-            renderPicturebookPage();
-            updateThumbnailActive();
-        });
-    });
-}
-
-// 更新缩略图选中状态
-function updateThumbnailActive() {
-    document.querySelectorAll('#page-thumbnails .thumbnail').forEach((thumb, index) => {
-        thumb.classList.toggle('active', index === currentPageIndex);
-    });
-    
-    // 滚动到当前缩略图
-    const activeThumb = document.querySelector('#page-thumbnails .thumbnail.active');
-    if (activeThumb) {
-        activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    }
-}
-
-// 渲染绘本页面
-function renderPicturebookPage() {
-    const page = currentPicturebook.pages[currentPageIndex];
-    const totalPages = currentPicturebook.pages.length;
-    
-    // 更新页面指示器
-    document.getElementById('page-indicator').textContent = `${currentPageIndex + 1} / ${totalPages}`;
-    
-    // 更新翻页按钮状态
-    document.getElementById('prev-page').disabled = currentPageIndex === 0;
-    document.getElementById('next-page').disabled = currentPageIndex === totalPages - 1;
-    
-    // 渲染图片（使用emoji占位）
-    const imageEl = document.getElementById('pb-page-image');
-    const placeholderEl = document.getElementById('pb-page-placeholder');
-    imageEl.classList.add('hidden');
-    placeholderEl.classList.remove('hidden');
-    placeholderEl.textContent = page.imageEmoji;
-    
-    // 渲染英文文字
-    document.getElementById('pb-page-text').innerHTML = page.text;
-    
-    // 渲染中文翻译
-    document.getElementById('pb-page-translation').innerHTML = page.translation;
-    
-    // 重置翻译显示状态
-    document.getElementById('pb-page-translation').classList.add('hidden');
-    document.getElementById('toggle-pb-translation').textContent = '查看中文翻译 ▼';
-    
-    // 渲染重点单词
-    renderPicturebookWords(page.words);
-    
-    // 更新缩略图选中状态
-    updateThumbnailActive();
-}
-
-// 渲染绘本单词
-function renderPicturebookWords(words) {
-    const container = document.getElementById('pb-words-list');
-    if (!words || words.length === 0) {
-        container.innerHTML = '<p style="color: var(--text-secondary); font-size: 14px; padding: 10px 0;">本页没有重点单词</p>';
-        return;
-    }
-    
-    container.innerHTML = words.map(word => `
-        <div class="word-card" data-word="${word.word}">
-            <div class="word-header">
-                <span class="word-text">${word.word}</span>
-                <span class="phonetic">${word.phonetic}</span>
-                <button class="play-word-btn" data-word="${word.word}">🔊</button>
-            </div>
-            <div class="meaning">${word.meaning}</div>
-            <div class="example">${word.example}</div>
-            <button class="add-word-btn-small" data-word='${JSON.stringify(word).replace(/'/g, "&#39;")}'>+ 加入单词本</button>
-        </div>
-    `).join('');
-    
-    // 添加单词事件
-    container.querySelectorAll('.word-card').forEach(card => {
-        card.addEventListener('click', (e) => {
-            if (!e.target.classList.contains('play-word-btn') && !e.target.classList.contains('add-word-btn-small')) {
-                showWordDetail(card.dataset.word);
-            }
-        });
-    });
-    
-    container.querySelectorAll('.play-word-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            playWord(btn.dataset.word, btn);
-        });
-    });
-    
-    container.querySelectorAll('.add-word-btn-small').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const wordData = JSON.parse(btn.dataset.word);
-            addToVocabulary(wordData);
-        });
-    });
-}
-
-// 绘本翻页
-function navigatePicturebookPage(direction) {
-    const totalPages = currentPicturebook.pages.length;
-    const newIndex = currentPageIndex + direction;
-    
-    if (newIndex >= 0 && newIndex < totalPages) {
-        currentPageIndex = newIndex;
-        renderPicturebookPage();
-    }
-}
-
-// 切换绘本翻译显示
-function togglePicturebookTranslation() {
-    const content = document.getElementById('pb-page-translation');
-    const btn = document.getElementById('toggle-pb-translation');
-    
-    if (content.classList.contains('hidden')) {
-        content.classList.remove('hidden');
-        btn.textContent = '收起中文翻译 ▲';
-    } else {
-        content.classList.add('hidden');
-        btn.textContent = '查看中文翻译 ▼';
-    }
 }
 
 // 启动应用
